@@ -1,0 +1,5 @@
+node_modules
+db/data
+dist
+TODO.txt
+.env
