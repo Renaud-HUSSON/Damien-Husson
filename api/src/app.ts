@@ -2,16 +2,17 @@ import { join } from 'path'
 import AutoLoad, { AutoloadPluginOptions } from 'fastify-autoload'
 import { FastifyPluginAsync } from 'fastify'
 import db from './config/Database'
-import { join } from 'path';
-import AutoLoad, {AutoloadPluginOptions} from 'fastify-autoload';
-import { FastifyPluginAsync } from 'fastify';
+import { initFolder } from './utils/initFolder'
 import fastifyStatic from 'fastify-static'
 import * as path from 'path'
 
 db.sequelize.sync()
 
-export type AppOptions = {
-} & Partial<AutoloadPluginOptions>;
+const imagesFolderPaths: string[] = [
+  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}/realisations/`,
+  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}/competences/`,
+]
+initFolder(imagesFolderPaths)
 
 export type AppOptions = {} & Partial<AutoloadPluginOptions>
 
