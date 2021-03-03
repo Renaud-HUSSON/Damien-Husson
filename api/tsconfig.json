@@ -1,11 +1,11 @@
 {
-    "extends": "fastify-tsconfig",
-    "compilerOptions": {
-        "outDir": "dist",
-        "typeRoots": [
-            "./node_modules/@types",
-            "./src/@types"
-        ]
-    },
-    "include": ["src/**/*.ts"]
+  "extends": "fastify-tsconfig",
+  "compilerOptions": {
+      "outDir": "dist",
+      "typeRoots": [
+          "./node_modules/@types",
+          "./node_modules/fastify-multer/typings"
+      ]
+  },
+  "include": ["src/**/*.ts"]
 }
