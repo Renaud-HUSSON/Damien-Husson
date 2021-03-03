@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import { DatabaseInterface } from '../@types/db'
+import { Database } from '../ts/interfaces/db'
 import RealisationModel from '../models/RealisationModel'
 
 const DB_DATABASE = process.env.DB_DATABASE ?? 'damien'
@@ -9,10 +9,10 @@ const DB_HOST = process.env.DB_HOST ?? 'damiendb'
 
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
   host: DB_HOST,
-  dialect: 'mysql'
-});
+  dialect: 'mysql',
+})
 
-const db : DatabaseInterface = {
+const db: Database = {
   sequelize: sequelize,
   realisations: RealisationModel(sequelize),
 }
