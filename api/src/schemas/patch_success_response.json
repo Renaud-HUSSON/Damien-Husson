@@ -1,0 +1,19 @@
+{
+  "title": "Patch Success Reponse Schema Interface",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Get Query String Schema Interface",
+  "type": "object",
+  "properties": {
+    "offset": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "id",
+          "titre",
+          "image",
+          "description",
+          "createdAt",
+          "updatedAt"
+        ]
+      }
+    },
+    "order": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "enum": [
+              "id",
+              "titre",
+              "image",
+              "description",
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          {
+            "enum": ["ASC", "DESC"]
+          }
+        ]
+      }
+    },
+    "where": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "titre": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "desciprtion": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Patch Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

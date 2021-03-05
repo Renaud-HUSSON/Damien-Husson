@@ -1,0 +1,10 @@
+{
+  "title": "Params Schema Interface",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

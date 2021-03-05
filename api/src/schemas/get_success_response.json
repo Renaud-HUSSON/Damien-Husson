@@ -1,0 +1,18 @@
+{
+  "title": "Get Success Response Schema Interface",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "http://localhost/api/schemas/realisation.json"
+      }
+    },
+    "total": {
+      "type": "number"
+    }
+  }
+}

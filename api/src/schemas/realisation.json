@@ -1,0 +1,25 @@
+{
+  "$id": "http://localhost/api/schemas/realisation.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "minimum": 0
+    },
+    "titre": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "desciprtion": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  }
+}

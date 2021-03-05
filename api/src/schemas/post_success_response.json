@@ -1,0 +1,15 @@
+{
+  "title": "Post Success Response Schema Interface",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "$ref": "http://localhost/api/schemas/realisation.json"
+    }
+  }
+}

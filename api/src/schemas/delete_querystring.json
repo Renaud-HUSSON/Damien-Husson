@@ -1,0 +1,22 @@
+{
+  "title": "Delete Query String Schema Interface",
+  "type": "object",
+  "properties": {
+    "id": {
+      "anyof": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
