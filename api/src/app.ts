@@ -1,10 +1,11 @@
 import { join } from 'path'
 import AutoLoad, { AutoloadPluginOptions } from 'fastify-autoload'
-import { FastifyPluginAsync } from 'fastify'
+import { FastifyInstance } from 'fastify'
 import db from './config/Database'
 import { initFolder } from './utils/initFolder'
 import fastifyStatic from 'fastify-static'
 import * as path from 'path'
+import qs from 'qs'
 
 db.sequelize.sync()
 
@@ -16,10 +17,7 @@ initFolder(imagesFolderPaths)
 
 export type AppOptions = {} & Partial<AutoloadPluginOptions>
 
-const app: FastifyPluginAsync<AppOptions> = async (
-  fastify,
-  opts
-): Promise<void> => {
+const app = async (fastify: FastifyInstance): Promise<void> => {
   fastify.register(fastifyStatic, {
     root: path.join(__dirname, 'images'),
     prefix: '/images/',
@@ -27,13 +25,15 @@ const app: FastifyPluginAsync<AppOptions> = async (
 
   fastify.register(AutoLoad, {
     dir: join(__dirname, 'plugins'),
-    options: opts,
   })
 
   fastify.register(AutoLoad, {
     dir: join(__dirname, 'routes'),
-    options: opts,
   })
+}
+
+module.exports.options = {
+  querystringParser: (str: string) => qs.parse(str),
 }
 
 export default app
