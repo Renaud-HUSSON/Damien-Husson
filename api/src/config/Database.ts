@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize'
 import { Database } from '../ts/interfaces/db'
 import RealisationModel from '../models/RealisationModel'
+import CompetenceModel from '../models/CompetenceModel'
 
 const DB_DATABASE = process.env.DB_DATABASE ?? 'damien'
 const DB_USERNAME = process.env.DB_USERNAME ?? 'root'
@@ -15,6 +16,7 @@ const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
 const db: Database = {
   sequelize: sequelize,
   realisations: RealisationModel(sequelize),
+  competences: CompetenceModel(sequelize),
 }
 
 export default db
