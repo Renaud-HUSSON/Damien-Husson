@@ -9,6 +9,6 @@
       "type": "string"
     }
   },
-  "required": ["titre"],
+  "required": ["titre", "description"],
   "additionalProperties": false
 }

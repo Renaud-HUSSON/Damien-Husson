@@ -4,6 +4,7 @@ export interface RealisationAttributes {
   id: number
   titre: string
   image: string
+  description: string
 }
 
 export interface RealisationCreationAttributes

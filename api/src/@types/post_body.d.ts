@@ -7,5 +7,5 @@
 
 export interface PostBodySchemaInterface {
   titre: string;
-  description?: string;
+  description: string;
 }

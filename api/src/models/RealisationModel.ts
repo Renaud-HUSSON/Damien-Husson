@@ -19,6 +19,10 @@ export default (sequelize: Sequelize): ModelCtor<Realisation> => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
       tableName: 'realisations',
