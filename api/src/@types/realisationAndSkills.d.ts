@@ -5,16 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface GetSingleSuccessResponseSchemaInterface {
-  success?: boolean;
-  data?: {
-    id?: number;
-    titre?: string;
-    image?: string;
-    description?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    [k: string]: unknown;
-  };
+export interface RealisationAndSkills {
+  id?: number;
+  titre?: string;
+  image?: string;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
   [k: string]: unknown;
 }

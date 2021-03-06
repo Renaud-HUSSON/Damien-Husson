@@ -12,7 +12,7 @@ export interface PostSuccessResponseSchemaInterface {
     id?: number;
     titre?: string;
     image?: string;
-    desciprtion?: string;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     [k: string]: unknown;

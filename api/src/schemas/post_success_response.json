@@ -9,7 +9,7 @@
       "type": "string"
     },
     "data": {
-      "$ref": "http://localhost/api/schemas/realisation.json"
+      "$ref": "http://localhost/api/schemas/realisationAndSkill.json"
     }
   }
 }

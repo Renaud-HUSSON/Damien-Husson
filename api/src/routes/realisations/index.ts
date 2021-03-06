@@ -11,7 +11,7 @@ import GetSuccessResponseSchema from '../../schemas/get_success_response.json'
 import PostSuccessResponseSchema from '../../schemas/post_success_response.json'
 import GetErrorResponseSchema from '../../schemas/error_response.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
-import RealisationSchema from '../../schemas/realisation.json'
+import RealisationAndSkillSchema from '../../schemas/realisationAndSkill.json'
 import GetSingleSuccessResponse from '../../schemas/get_single_success_response.json'
 import { GetQueryStringSchemaInterface } from '../../@types/get_querystring'
 import { PostBodySchemaInterface } from '../../@types/post_body'
@@ -35,7 +35,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
     deleteById,
   } = RealisationsController(db, fastify, 'realisations')
 
-  fastify.addSchema(RealisationSchema)
+  fastify.addSchema(RealisationAndSkillSchema)
 
   fastify.get<{
     Querystring: GetQueryStringSchemaInterface

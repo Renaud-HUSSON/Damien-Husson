@@ -1,5 +1,5 @@
 {
-  "$id": "http://localhost/api/schemas/realisation.json",
+  "$id": "http://localhost/api/schemas/realisationAndSkill.json",
   "type": "object",
   "properties": {
     "id": {
