@@ -12,7 +12,7 @@
     "image": {
       "type": "string"
     },
-    "desciprtion": {
+    "description": {
       "type": "string"
     },
     "createdAt": {
