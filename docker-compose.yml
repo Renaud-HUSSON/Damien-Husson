@@ -1,16 +1,16 @@
-version: "3.9"
-services: 
+version: '3.9'
+services:
   api:
     container_name: damienapi
     image: damienapi
     build:
       context: ./api
-    depends_on: 
+    depends_on:
       - db
-    volumes: 
+    volumes:
       - ./api:/api
       - /api/node_modules/
-    ports: 
+    ports:
       - 4001:3000
     command: npm run dev
     restart: always
@@ -24,7 +24,7 @@ services:
       - 3306:3306
     cap_add:
       - SYS_NICE
-    environment: 
+    environment:
       MYSQL_USER: root
       MYSQL_HOST: localhost
       MYSQL_ROOT_PASSWORD: root
@@ -34,13 +34,10 @@ services:
   nginx:
     container_name: damiennginx
     image: nginx:latest
-    depends_on: 
+    depends_on:
       - api
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
     restart: always
-    
-
-    

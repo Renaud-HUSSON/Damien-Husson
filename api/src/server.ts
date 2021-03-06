@@ -1,8 +1,6 @@
 // Read the .env file.
-import dotenv from 'dotenv'
 import qs from 'qs'
 import app from './app'
-dotenv.config()
 
 // Require the framework
 import Fastify from 'fastify'
@@ -10,10 +8,11 @@ import Fastify from 'fastify'
 // Instantiate Fastify with some config
 const fastify = Fastify({
   logger: true,
-  querystringParser: (str: string) =>
-    qs.parse(str, {
+  querystringParser: (str: string) => {
+    return qs.parse(str, {
       allowDots: true,
-    }),
+    })
+  },
 })
 
 // Register your application as a normal plugin.
