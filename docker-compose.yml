@@ -41,3 +41,19 @@ services:
     ports:
       - 80:80
     restart: always
+  # ~~~~~~~~~~~~~~ NGINX END ~~~~~~~~~~~~~
+  admin:
+    container_name: damienadmin
+    image: damienadmin
+    build:
+      context: ./admin
+    depends_on:
+      - api
+      - nginx
+    volumes:
+      - ./admin:/admin
+      - /admin/node_modules
+    ports:
+      - 4002:3000
+    command: npm start
+    restart: always
