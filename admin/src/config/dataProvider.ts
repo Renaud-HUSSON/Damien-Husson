@@ -1,37 +1,13 @@
-import {
-  CreateParams,
-  CreateResult,
-  DataProvider,
-  DeleteManyParams,
-  DeleteManyResult,
-  DeleteParams,
-  DeleteResult,
-  GetListParams,
-  GetListResult,
-  GetManyParams,
-  GetManyReferenceParams,
-  GetManyReferenceResult,
-  GetManyResult,
-  GetOneParams,
-  GetOneResult,
-  UpdateManyParams,
-  UpdateManyResult,
-  UpdateParams,
-  UpdateResult,
-} from 'ra-core'
+import { DataProvider } from 'ra-core'
+import { paramsToFormData } from '../util/paramsToFormdata'
 
 const API_URL = '/api/'
 
 export const dataProvider: DataProvider = {
-  getList: async <GetListType>(
-    resource: string,
-    params: GetListParams
-  ): Promise<GetListResult<GetListType>> => {
-    console.log(params)
-
-    const data: GetListResult<GetListType> = await fetch(
-      `${API_URL}${resource}?page=${params.pagination.page}&offset=${
-        params.pagination.perPage * params.pagination.page - 1
+  getList: async (resource, params) => {
+    const data = await fetch(
+      `${API_URL}${resource}?page=${params.pagination.page - 1}&limit=${
+        params.pagination.perPage
       }`
     ).then((res) => res.json())
 
@@ -40,107 +16,79 @@ export const dataProvider: DataProvider = {
       total: data.total,
     }
   },
-  getOne: async <GetOneType>(
-    resource: string,
-    params: GetOneParams
-  ): Promise<GetOneResult<GetOneType>> => {
-    const data: GetOneResult<GetOneType> = await fetch(
-      `${API_URL}${resource}/${params.id}`
-    ).then((res) => res.json())
+  getOne: async (resource, params) => {
+    const data = await fetch(`${API_URL}${resource}/${params.id}`).then((res) =>
+      res.json()
+    )
 
     return {
       data: data.data,
     }
   },
-  getMany: async <GetManyType>(
-    resource: string,
-    params: GetManyParams
-  ): Promise<GetManyResult<GetManyType>> => {
+  getMany: async (resource, params) => {
     const ids = params.ids.toString()
 
-    const data: GetManyResult<GetManyType> = await fetch(
-      `${resource}${resource}/id[]=${ids}`
-    ).then((res) => res.json())
+    const data = await fetch(`${resource}${resource}/id[]=${ids}`).then((res) =>
+      res.json()
+    )
 
     return {
       data: data.data,
     }
   },
   //Useless in my case, there will be no references
-  getManyReference: async <GetManyReferenceType>(
-    resource: string,
-    params: GetManyReferenceParams
-  ): Promise<GetManyReferenceResult<GetManyReferenceType>> => {
-    return new Promise<GetManyReferenceResult<GetManyReferenceType>>(() => {})
+  getManyReference: async (_resource, _params) => {
+    return new Promise(() => {})
   },
-  create: async <CreateType>(
-    resource: string,
-    params: CreateParams
-  ): Promise<CreateResult<CreateType>> => {
-    const formData = new FormData()
+  create: async (resource, params) => {
+    const formData = paramsToFormData(params.data)
 
-    for (let item in params.data) {
-      formData.append(item, params.data[item])
-    }
-
-    const data: CreateType = await fetch(`${API_URL}${resource}`, {
+    const data = await fetch(`${API_URL}${resource}`, {
       method: 'POST',
       body: formData,
-      headers: new Headers({ 'Content-Type': 'multipart/formdata' }),
     }).then((res) => res.json())
 
     return {
-      data: data,
+      data: data.data,
     }
   },
-  update: async <UpdateType>(
-    resource: string,
-    params: UpdateParams
-  ): Promise<UpdateResult<UpdateType>> => {
-    const formData = new FormData()
+  update: async (resource, params) => {
+    const formData = paramsToFormData(params.data)
 
-    for (let item in params.data) {
-      formData.append(item, params.data[item])
-    }
-
-    const data: UpdateType = await fetch(`${API_URL}${resource}/${params.id}`, {
+    const data = await fetch(`${API_URL}${resource}/${params.id}`, {
       method: 'PATCH',
       body: formData,
-      headers: new Headers({ 'Content-Type': 'multipart/formdata' }),
+    }).then((res) => res.json())
+
+    return {
+      data: data.data,
+    }
+  },
+  updateMany: async (_resource, _params) => {
+    return new Promise(() => {})
+  },
+  delete: async (resource, params) => {
+    const data = await fetch(`${API_URL}${resource}?id[]=${params.id}`, {
+      method: 'DELETE',
     }).then((res) => res.json())
 
     return {
       data: data,
     }
   },
-  updateMany: async (
-    _resource: string,
-    _params: UpdateManyParams
-  ): Promise<UpdateManyResult> => {
-    return new Promise<UpdateManyResult>(() => {})
-  },
-  delete: async <DeleteType>(
-    resource: string,
-    params: DeleteParams
-  ): Promise<DeleteResult<DeleteType>> => {
-    const data: DeleteType = await fetch(
-      `${API_URL}${resource}?id=${params.id}`
-    ).then((res) => res.json())
+  deleteMany: async (resource, params) => {
+    let url = ''
 
-    return {
-      data: data,
+    for (let id of params.ids) {
+      url += `id[]=${id}&`
     }
-  },
-  deleteMany: async (
-    resource: string,
-    params: DeleteManyParams
-  ): Promise<DeleteManyResult> => {
-    const data = await fetch(
-      `${API_URL}${resource}?id=${params.ids}`
-    ).then((res) => res.json())
+
+    await fetch(`${API_URL}${resource}?${url}`, {
+      method: 'DELETE',
+    }).then((res) => res.json())
 
     return {
-      data: data,
+      data: params.ids,
     }
   },
 }
