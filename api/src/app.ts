@@ -9,8 +9,8 @@ import { config } from 'dotenv'
 config()
 
 const imagesFolderPaths: string[] = [
-  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}realisations/`,
-  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}competences/`,
+  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/realisations/`,
+  `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/competences/`,
 ]
 
 export type AppOptions = {} & Partial<AutoloadPluginOptions>

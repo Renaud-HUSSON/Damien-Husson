@@ -13,9 +13,9 @@ import { PatchBodySchemaInterface } from '../@types/patch_body'
 import { ParamsSchemaInterface } from '../@types/params'
 import { GetSuccessResponseSchemaInterface } from '../@types/get_success_response'
 
-const REALISATIONS_FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}realisations/`
-
 export default (db: Database, fastify: FastifyInstance, table: string) => {
+  const FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/${table}/`
+
   const { internalServerError, badRequest, notFound } = fastify.httpErrors
 
   const findAll = async (
@@ -79,15 +79,17 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
       throw badRequest('Vous devez préciser une image')
     }
 
+    const imagePath = `/images/${table}/${req.file.originalname}`
+
     //Stores the image or returns an error
     try {
       await promisifiedWriteFile(
-        `${REALISATIONS_FOLDER}${req.file.originalname}`,
+        `${FOLDER}${req.file.originalname}`,
         req.file?.buffer!
       )
       const { dataValues: data } = await db[table].create({
         ...req.body,
-        image: req.file.originalname,
+        image: imagePath,
       })
       return {
         success: true,
@@ -110,13 +112,11 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     const { file } = req
     const { id } = req.params
 
-    if (!req.body?.titre && !file) {
-      throw badRequest('Vous devez préciser un titre et / ou une image')
-    }
+    const imagePath = `/images/${table}/{req.file.originalname}`
 
     const values = {
       ...req.body,
-      ...(file && { image: file.originalname }),
+      ...(file && { image: imagePath }),
     }
 
     try {
@@ -125,8 +125,8 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
 
         if (realisation) {
           await deleteOldFileAndCreateAnother(
-            REALISATIONS_FOLDER + realisation.dataValues.image,
-            REALISATIONS_FOLDER + file.originalname,
+            realisation.dataValues.image,
+            `${FOLDER}${req.file.originalname}`,
             file.buffer!
           )
         }
@@ -139,7 +139,9 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
       return {
         success: true,
         message: 'Les informations ont bien été mises à jour',
-        data: data,
+        data: {
+          id: data[0],
+        },
       }
     } catch (err) {
       throw internalServerError(
@@ -151,21 +153,19 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
   const deleteById = async (
     req: FastifyRequest<{ Querystring: DeleteQueryStringSchemaInterface }>
   ) => {
-    console.log(req.query)
-
     try {
       const realisations = await db[table].findAll({
-        where: { id: req.query },
+        where: { id: req.query.id },
       })
 
       for (let realisation of realisations) {
-        await promisifiedDeleteFile(
-          REALISATIONS_FOLDER + realisation.dataValues.image
-        )
+        const imagePath = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}${realisation.dataValues.image}`
+
+        await promisifiedDeleteFile(imagePath).catch((_e) => {})
       }
 
       await db[table].destroy({
-        where: { id: req.query },
+        where: { id: req.query.id },
       })
 
       return {
