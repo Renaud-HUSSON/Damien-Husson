@@ -5,10 +5,14 @@ const API_URL = '/api/'
 
 export const dataProvider: DataProvider = {
   getList: async (resource, params) => {
+    console.log(params)
+
     const data = await fetch(
-      `${API_URL}${resource}?page=${params.pagination.page - 1}&limit=${
-        params.pagination.perPage
-      }`
+      `${API_URL}${resource}?offset=${
+        (params.pagination.page - 1) * params.pagination.perPage
+      }&limit=${params.pagination.perPage}&order[0][]=${
+        params.sort.field
+      }&order[0][]=${params.sort.order}`
     ).then((res) => res.json())
 
     return {
@@ -41,7 +45,7 @@ export const dataProvider: DataProvider = {
     return new Promise(() => {})
   },
   create: async (resource, params) => {
-    const formData = paramsToFormData(params.data)
+    const formData = paramsToFormData(params)
 
     const data = await fetch(`${API_URL}${resource}`, {
       method: 'POST',
@@ -53,7 +57,7 @@ export const dataProvider: DataProvider = {
     }
   },
   update: async (resource, params) => {
-    const formData = paramsToFormData(params.data)
+    const formData = paramsToFormData(params)
 
     const data = await fetch(`${API_URL}${resource}/${params.id}`, {
       method: 'PATCH',
