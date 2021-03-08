@@ -9,10 +9,12 @@
       "type": "string"
     },
     "data": {
-      "type": "array",
-      "items": {
-        "type": "number",
-        "minimum": 0
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "minimum": 0
+        }
       }
     }
   }

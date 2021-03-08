@@ -8,6 +8,9 @@
 export interface PatchSuccessReponseSchemaInterface {
   success?: boolean;
   message?: string;
-  data?: number[];
+  data?: {
+    id?: number;
+    [k: string]: unknown;
+  };
   [k: string]: unknown;
 }
