@@ -13,6 +13,7 @@ import GetErrorResponseSchema from '../../schemas/error_response.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
 import RealisationAndSkillSchema from '../../schemas/realisationAndSkill.json'
 import GetSingleSuccessResponse from '../../schemas/get_single_success_response.json'
+import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
 import { GetQueryStringSchemaInterface } from '../../@types/get_querystring'
 import { PostBodySchemaInterface } from '../../@types/post_body'
 import { PatchBodySchemaInterface } from '../../@types/patch_body'
@@ -23,6 +24,7 @@ import { PostSuccessResponseSchemaInterface } from '../../@types/post_success_re
 import { GetErrorResponseSchemaInterface } from '../../@types/error_response'
 import { PatchSuccessReponseSchemaInterface } from '../../@types/patch_success_response'
 import { GetSingleSuccessResponseSchemaInterface } from '../../@types/get_single_success_response'
+import { DeleteSuccessResponseSchemaInterface } from '../../@types/delete_success_response'
 
 const upload = multer()
 
@@ -124,13 +126,14 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
 
   fastify.delete<{
     Querystring: DeleteQueryStringSchemaInterface
+    Response: DeleteSuccessResponseSchemaInterface
   }>(
     '/',
     {
       schema: {
         querystring: DeleteQuerystringSchema,
         response: {
-          '2xx': GetSuccessResponseSchema,
+          '2xx': DeleteSuccessResponseSchema,
           '4xx': GetErrorResponseSchema,
           '5xx': GetErrorResponseSchema,
         },
