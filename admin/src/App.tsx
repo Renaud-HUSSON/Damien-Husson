@@ -8,10 +8,11 @@ import { CompetencesList } from './components/Competences/List'
 import { CompetencesCreate } from './components/Competences/Create'
 import { CompetencesEdit } from './components/Competences/Edit'
 import CompetencesIcon from '@material-ui/icons/BookmarkBorder'
+import { authProvider } from './config/authProvider'
 
 const App = () => {
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} authProvider={authProvider}>
       <Resource
         name='realisations'
         list={RealisationsList}
