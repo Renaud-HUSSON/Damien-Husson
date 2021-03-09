@@ -1,0 +1,12 @@
+{
+  "title": "Post Login Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
+  }
+}

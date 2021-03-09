@@ -5,12 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Realisation {
-  id?: number;
-  titre?: string;
-  image?: string;
-  description?: string;
-  createdAt?: string;
-  updatedAt?: string;
+export interface PostLoginResponseSchemaInterface {
+  success?: boolean;
+  message?: string;
   [k: string]: unknown;
 }
