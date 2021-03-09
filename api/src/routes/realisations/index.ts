@@ -9,22 +9,11 @@ import ParamsSchema from '../../schemas/params.json'
 import DeleteQuerystringSchema from '../../schemas/delete_querystring.json'
 import GetSuccessResponseSchema from '../../schemas/get_success_response.json'
 import PostSuccessResponseSchema from '../../schemas/post_success_response.json'
-import GetErrorResponseSchema from '../../schemas/error_response.json'
+import ErrorResponseSchema from '../../schemas/error_response.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
 import RealisationAndSkillSchema from '../../schemas/realisationAndSkill.json'
 import GetSingleSuccessResponse from '../../schemas/get_single_success_response.json'
 import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
-import { GetQueryStringSchemaInterface } from '../../@types/get_querystring'
-import { PostBodySchemaInterface } from '../../@types/post_body'
-import { PatchBodySchemaInterface } from '../../@types/patch_body'
-import { ParamsSchemaInterface } from '../../@types/params'
-import { DeleteQueryStringSchemaInterface } from '../../@types/delete_querystring'
-import { GetSuccessResponseSchemaInterface } from '../../@types/get_success_response'
-import { PostSuccessResponseSchemaInterface } from '../../@types/post_success_response'
-import { GetErrorResponseSchemaInterface } from '../../@types/error_response'
-import { PatchSuccessReponseSchemaInterface } from '../../@types/patch_success_response'
-import { GetSingleSuccessResponseSchemaInterface } from '../../@types/get_single_success_response'
-import { DeleteSuccessResponseSchemaInterface } from '../../@types/delete_success_response'
 
 const upload = multer()
 
@@ -39,55 +28,35 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
 
   fastify.addSchema(RealisationAndSkillSchema)
 
-  fastify.get<{
-    Querystring: GetQueryStringSchemaInterface
-    Response: {
-      '2xx': GetSuccessResponseSchemaInterface
-      '5xx': GetErrorResponseSchemaInterface
-    }
-  }>(
+  fastify.get(
     '/',
     {
       schema: {
         querystring: GetQueryStringSchema,
         response: {
           '2xx': GetSuccessResponseSchema,
-          '5xx': GetErrorResponseSchema,
+          '5xx': ErrorResponseSchema,
         },
       },
     },
     findAll
   )
 
-  fastify.get<{
-    Params: ParamsSchemaInterface
-    Response: {
-      '2xx': GetSingleSuccessResponseSchemaInterface
-      '4xx': GetErrorResponseSchemaInterface
-      '5xx': GetErrorResponseSchemaInterface
-    }
-  }>(
+  fastify.get(
     '/:id',
     {
       schema: {
         response: {
           '2xx': GetSingleSuccessResponse,
-          '4xx': GetErrorResponseSchema,
-          '5xx': GetErrorResponseSchema,
+          '4xx': ErrorResponseSchema,
+          '5xx': ErrorResponseSchema,
         },
       },
     },
     findById
   )
 
-  fastify.post<{
-    Body: PostBodySchemaInterface
-    Response: {
-      '2xx': PostSuccessResponseSchemaInterface
-      '4xx': GetErrorResponseSchemaInterface
-      '5xx': GetErrorResponseSchemaInterface
-    }
-  }>(
+  fastify.post(
     '/',
     {
       preValidation: upload.single('image'),
@@ -95,19 +64,15 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
         body: PostBodySchema,
         response: {
           '2xx': PostSuccessResponseSchema,
-          '4xx': GetErrorResponseSchema,
-          '5xx': GetErrorResponseSchema,
+          '4xx': ErrorResponseSchema,
+          '5xx': ErrorResponseSchema,
         },
       },
     },
     create
   )
 
-  fastify.patch<{
-    Body: PatchBodySchemaInterface
-    Params: ParamsSchemaInterface
-    Response: PatchSuccessReponseSchemaInterface
-  }>(
+  fastify.patch(
     '/:id',
     {
       preValidation: upload.single('image'),
@@ -116,26 +81,23 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
         params: ParamsSchema,
         response: {
           '2xx': PatchSuccessResponseSchema,
-          '4xx': GetErrorResponseSchema,
-          '5xx': GetErrorResponseSchema,
+          '4xx': ErrorResponseSchema,
+          '5xx': ErrorResponseSchema,
         },
       },
     },
     update
   )
 
-  fastify.delete<{
-    Querystring: DeleteQueryStringSchemaInterface
-    Response: DeleteSuccessResponseSchemaInterface
-  }>(
+  fastify.delete(
     '/',
     {
       schema: {
         querystring: DeleteQuerystringSchema,
         response: {
           '2xx': DeleteSuccessResponseSchema,
-          '4xx': GetErrorResponseSchema,
-          '5xx': GetErrorResponseSchema,
+          '4xx': ErrorResponseSchema,
+          '5xx': ErrorResponseSchema,
         },
       },
     },
