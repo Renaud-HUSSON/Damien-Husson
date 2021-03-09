@@ -5,8 +5,6 @@ const API_URL = '/api/'
 
 export const dataProvider: DataProvider = {
   getList: async (resource, params) => {
-    console.log(params)
-
     const data = await fetch(
       `${API_URL}${resource}?offset=${
         (params.pagination.page - 1) * params.pagination.perPage
