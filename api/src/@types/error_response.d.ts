@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface GetErrorResponseSchemaInterface {
+export interface ErrorResponseSchemaInterface {
   statusCode?: number;
   error?: string;
   message?: string;

@@ -1,5 +1,5 @@
 {
-  "title": "Get Error Response Schema Interface",
+  "title": "Error Response Schema Interface",
   "type": "object",
   "properties": {
     "statusCode": {
