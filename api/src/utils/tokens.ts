@@ -58,7 +58,9 @@ export const verifyRefreshTokenAndCreateAccessToken = async (
 
   const accessToken = createAccessToken('15s')
 
-  reply.setCookie('accessToken', accessToken)
+  reply.setCookie('accessToken', accessToken, {
+    httpOnly: true,
+  })
 }
 
 export const deleteRefreshTokenFromDatabase = async (token: string) => {

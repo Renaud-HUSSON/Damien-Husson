@@ -44,8 +44,12 @@ export const UtilisateursController = (
     const accessToken = createAccessToken('15s')
     const refreshToken = await createRefreshToken(account.dataValues.id)
 
-    reply.setCookie('accessToken', accessToken)
-    reply.setCookie('refreshToken', refreshToken)
+    reply.setCookie('accessToken', accessToken, {
+      httpOnly: true,
+    })
+    reply.setCookie('refreshToken', refreshToken, {
+      httpOnly: true,
+    })
 
     return {
       success: true,
