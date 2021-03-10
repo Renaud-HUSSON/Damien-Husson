@@ -54,53 +54,57 @@ const competencesRoute = async (fastify: FastifyInstance) => {
     findById
   )
 
-  fastify.post(
-    '/',
-    {
-      preValidation: upload.single('image'),
-      schema: {
-        body: PostBodySchema,
-        response: {
-          '2xx': PostSuccessResponseSchema,
-          '4xx': ErrorResponseSchema,
-          '5xx': ErrorResponseSchema,
-        },
-      },
-    },
-    create
-  )
+  fastify.register(async (fastify, _options) => {
+    fastify.addHook('onRequest', fastify.auth)
 
-  fastify.patch(
-    '/:id',
-    {
-      preValidation: upload.single('image'),
-      schema: {
-        body: PatchBodySchema,
-        params: ParamsSchema,
-        response: {
-          '2xx': PatchSuccessResponseSchema,
-          '4xx': ErrorResponseSchema,
-          '5xx': ErrorResponseSchema,
+    fastify.post(
+      '/',
+      {
+        preValidation: upload.single('image'),
+        schema: {
+          body: PostBodySchema,
+          response: {
+            '2xx': PostSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
+            '5xx': ErrorResponseSchema,
+          },
         },
       },
-    },
-    update
-  )
+      create
+    )
 
-  fastify.delete(
-    '/',
-    {
-      schema: {
-        querystring: DeleteQuerystringSchema,
-        response: {
-          '2xx': DeleteSuccessResponseSchema,
-          '4xx': ErrorResponseSchema,
-          '5xx': ErrorResponseSchema,
+    fastify.patch(
+      '/:id',
+      {
+        preValidation: upload.single('image'),
+        schema: {
+          body: PatchBodySchema,
+          params: ParamsSchema,
+          response: {
+            '2xx': PatchSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
+            '5xx': ErrorResponseSchema,
+          },
         },
       },
-    },
-    deleteById
-  )
+      update
+    )
+
+    fastify.delete(
+      '/',
+      {
+        schema: {
+          querystring: DeleteQuerystringSchema,
+          response: {
+            '2xx': DeleteSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
+            '5xx': ErrorResponseSchema,
+          },
+        },
+      },
+      deleteById
+    )
+  })
 }
 
 export default competencesRoute

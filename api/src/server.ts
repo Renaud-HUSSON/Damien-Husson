@@ -4,6 +4,7 @@ import app from './app'
 
 // Require the framework
 import Fastify from 'fastify'
+import sensible from 'fastify-sensible'
 
 // Instantiate Fastify with some config
 const fastify = Fastify({
@@ -15,7 +16,10 @@ const fastify = Fastify({
   },
 })
 
-// Register your application as a normal plugin.
+fastify.register(sensible, {
+  errorHandler: false,
+})
+
 fastify.register(app)
 
 // Start listening.

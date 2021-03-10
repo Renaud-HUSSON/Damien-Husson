@@ -8,9 +8,11 @@ const ACCESS_TOKEN_SECRET = process.env.FASTIFY_PUBLIC_ACCESS_TOKEN_SECRET
 export const deleteTokenCookies = (reply: FastifyReply) => {
   reply.setCookie('refreshToken', '', {
     maxAge: 0,
+    path: '/',
   })
   reply.setCookie('accessToken', '', {
     maxAge: 0,
+    path: '/',
   })
 }
 
@@ -60,6 +62,7 @@ export const verifyRefreshTokenAndCreateAccessToken = async (
 
   reply.setCookie('accessToken', accessToken, {
     httpOnly: true,
+    path: '/',
   })
 }
 

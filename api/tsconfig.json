@@ -3,8 +3,7 @@
     "outDir": "dist",
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/fastify-multer/typings",
-      "src/@types"
+      "./node_modules/fastify-multer/typings"
     ],
     "esModuleInterop": true,
     "resolveJsonModule": true

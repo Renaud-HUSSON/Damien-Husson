@@ -10,11 +10,9 @@ import {
   verifyRefreshTokenAndCreateAccessToken,
   deleteTokenCookies,
 } from '../utils/tokens'
+import cookies from '../plugins/cookies'
 
-export const UtilisateursController = (
-  db: Database,
-  fastify: FastifyInstance
-) => {
+export const authController = (db: Database, fastify: FastifyInstance) => {
   const { unauthorized } = fastify.httpErrors
 
   const login = async (
@@ -46,9 +44,11 @@ export const UtilisateursController = (
 
     reply.setCookie('accessToken', accessToken, {
       httpOnly: true,
+      path: '/',
     })
     reply.setCookie('refreshToken', refreshToken, {
       httpOnly: true,
+      path: '/',
     })
 
     return {

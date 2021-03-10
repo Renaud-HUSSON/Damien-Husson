@@ -112,7 +112,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     const { file } = req
     const { id } = req.params
 
-    const imagePath = `/images/${table}/{req.file.originalname}`
+    const imagePath = `/images/${table}/${req.file.originalname}`
 
     const values = {
       ...req.body,

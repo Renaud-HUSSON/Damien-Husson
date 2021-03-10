@@ -1,13 +1,13 @@
 import { FastifyInstance } from 'fastify'
 import db from '../../config/Database'
-import { UtilisateursController } from '../../controllers/AuthController'
+import { authController } from '../../controllers/AuthController'
 import PostLoginResponseSchema from '../../schemas/auth/post_login_response.json'
 import ErrorResponseSchema from '../../schemas/error_response.json'
 import PostLoginBodySchema from '../../schemas/auth/post_login_body.json'
 import GetAuthenticatedSuccessResponseSchema from '../../schemas/auth/get_authenticated_success_response.json'
 
 const authRoutes = async (fastify: FastifyInstance) => {
-  const { login, authenticated, logout } = UtilisateursController(db, fastify)
+  const { login, authenticated, logout } = authController(db, fastify)
 
   fastify.post(
     '/login',
