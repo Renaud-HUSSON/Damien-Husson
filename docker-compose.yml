@@ -36,6 +36,8 @@ services:
     image: nginx:latest
     depends_on:
       - api
+      - admin
+      - client
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
@@ -49,11 +51,25 @@ services:
       context: ./admin
     depends_on:
       - api
-      - nginx
     volumes:
       - ./admin:/admin
       - /admin/node_modules
     ports:
       - 4002:3000
     command: npm start
+    restart: always
+  # ~~~~~~~~~~~~~~~~ ADMIN END ~~~~~~~~~~~
+  client:
+    container_name: damienclient
+    image: damienclient
+    build:
+      context: ./client
+    depends_on:
+      - api
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    ports:
+      - 4000:3000
+    command: npm run dev
     restart: always
