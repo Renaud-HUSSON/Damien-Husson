@@ -25,7 +25,13 @@ export const CompetencesEdit = (props: EditProps) => {
         >
           <ImageField title='titre' />
         </ImageInput>
-        <TextInput source='description' validate={[required()]} />
+        <TextInput
+          source='description'
+          multiline={true}
+          fullWidth={true}
+          rows={5}
+          validate={[required()]}
+        />
         <DateInput source='createdAt' disabled={true} />
         <DateInput source='updatedAt' disabled={true} />
       </SimpleForm>

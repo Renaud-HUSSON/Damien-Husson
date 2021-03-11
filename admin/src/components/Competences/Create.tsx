@@ -21,7 +21,13 @@ export const CompetencesCreate = (props: CreateProps) => {
         >
           <ImageField source='src' title='title' />
         </ImageInput>
-        <TextInput source='description' validate={[required()]} />
+        <TextInput
+          source='description'
+          multiline={true}
+          fullWidth={true}
+          rows={5}
+          validate={[required()]}
+        />
       </SimpleForm>
     </Create>
   )
