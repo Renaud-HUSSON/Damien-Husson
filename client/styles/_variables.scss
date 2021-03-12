@@ -1,0 +1,14 @@
+:root {
+  --orange: #ff8831;
+  --pink: #ff3e7a;
+  --purple: #42249a;
+  --navHeight: 5rem;
+  --textColor: #4c4a58;
+  --bodyPadding: 15vw;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --bodyPadding: 5vw;
+  }
+}
