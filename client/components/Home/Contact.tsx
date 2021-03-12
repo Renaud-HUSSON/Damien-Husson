@@ -1,12 +1,18 @@
+import { FormEvent, useEffect } from 'react'
 import { Socials } from './Socials'
 
 export const Contact = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+  }
+
   return (
     <footer>
       <div className='home__contact'>
+        <div id='contact'></div>
         <h2>Contactez-moi !</h2>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <input type='text' name='prenom' placeholder='Prénom' />
               <input type='text' name='nom' placeholder='Nom' />
@@ -17,8 +23,12 @@ export const Contact = () => {
           </form>
           <div>
             <p>Damien Husson - Etudiant</p>
-            <p>damienhusson09@gmail.com</p>
-            <p>damien.husson@etud.univ-tln.fr</p>
+            <a href='mailto:damienhusson09@gmail.com'>
+              damienhusson09@gmail.com
+            </a>
+            <a href='mailto:damien.husson@etud.univ-tln.fr'>
+              damien.husson@etud.univ-tln.fr
+            </a>
             <p>06 78 91 02 75</p>
             <div>
               <Socials />
