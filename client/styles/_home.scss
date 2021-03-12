@@ -299,6 +299,7 @@
             width: max-content;
             padding: 0.5rem 2rem;
             align-self: flex-end;
+            cursor: pointer;
           }
         }
 
@@ -308,6 +309,10 @@
           justify-content: center;
           gap: 1.5rem;
           font-size: 1.25rem;
+
+          a {
+            text-decoration: none;
+          }
 
           div {
             display: flex;
@@ -465,7 +470,8 @@
           margin: 1.5rem 0;
         }
 
-        > div > div p {
+        > div > div p,
+        > div > div a {
           font-size: 1rem;
         }
       }
