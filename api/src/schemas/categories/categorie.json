@@ -1,0 +1,13 @@
+{
+  "$id": "http://localhost/api/schemas/categories/categorie.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "minimum": 0
+    },
+    "nom": {
+      "type": "string"
+    }
+  }
+}

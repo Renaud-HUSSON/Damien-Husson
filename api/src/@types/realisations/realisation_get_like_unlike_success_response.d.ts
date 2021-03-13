@@ -5,6 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface RealisationPostLikeBodySchemaInterface {
-  id: number;
+export interface RealisationGetLikeUnlikeSuccessResponseSchemaInterface {
+  success?: boolean;
+  [k: string]: unknown;
 }

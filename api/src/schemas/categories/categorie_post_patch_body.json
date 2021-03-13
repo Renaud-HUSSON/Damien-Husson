@@ -1,0 +1,11 @@
+{
+  "title": "Categorie Post Patch Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "nom": {
+      "type": "string"
+    }
+  },
+  "required": ["nom"],
+  "additionalProperties": false
+}
