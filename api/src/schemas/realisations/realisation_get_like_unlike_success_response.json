@@ -1,0 +1,9 @@
+{
+  "title": "Realisation Get Like Unlike Success Response Schema Interface",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    }
+  }
+}

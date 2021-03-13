@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import db from '../../config/Database'
 import multer from 'fastify-multer'
-import RealisationsController from '../../controllers/CompetencesController'
+import RealisationsController from '../../controllers/RealisationsController'
 import GetQueryStringSchema from '../../schemas/get_querystring.json'
 import RealisationPostBodySchema from '../../schemas/realisations/realisation_post_body.json'
 import RealisationPatchBodySchema from '../../schemas/realisations/realisation_patch_body.json'
@@ -14,6 +14,9 @@ import PatchSuccessResponseSchema from '../../schemas/patch_success_response.jso
 import RealisationSchema from '../../schemas/realisations/realisation.json'
 import RealisationGetSingleSuccessResponse from '../../schemas/realisations/realisation_get_single_success_response.json'
 import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
+import RealisationPostLikeBody from '../../schemas/realisations/realisation_post_like_body.json'
+import RealisationPostUnlikeBody from '../../schemas/realisations/realisation_post_unlike_body.json'
+import RealisationPostLikeUnlikeSuccessResponse from '../../schemas/realisations/realisation_get_like_unlike_success_response.json'
 
 const upload = multer()
 
@@ -24,6 +27,8 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
     create,
     update,
     deleteById,
+    like,
+    unlike,
   } = RealisationsController(db, fastify)
 
   fastify.addSchema(RealisationSchema)
@@ -54,6 +59,34 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
       },
     },
     findById
+  )
+
+  fastify.post(
+    '/like',
+    {
+      schema: {
+        body: RealisationPostLikeBody,
+        response: {
+          '2xx': RealisationPostLikeUnlikeSuccessResponse,
+          '5xx': ErrorResponseSchema,
+        },
+      },
+    },
+    like
+  )
+
+  fastify.post(
+    '/unlike',
+    {
+      schema: {
+        body: RealisationPostUnlikeBody,
+        response: {
+          '2xx': RealisationPostLikeUnlikeSuccessResponse,
+          '5xx': ErrorResponseSchema,
+        },
+      },
+    },
+    unlike
   )
 
   fastify.register(async (fastify) => {

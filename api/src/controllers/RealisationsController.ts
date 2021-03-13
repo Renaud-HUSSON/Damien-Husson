@@ -12,6 +12,7 @@ import { RealisationPostBodySchemaInterface } from '../@types/realisations/reali
 import { RealisationPatchBodySchemaInterface } from '../@types/realisations/realisation_patch_body'
 import { ParamsSchemaInterface } from '../@types/params'
 import { RealisationGetSuccessResponseSchemaInterface } from '../@types/realisations/realisation_get_success_response'
+import { RealisationPostLikeBodySchemaInterface } from '../@types/realisations/realisation_post_like_body'
 
 export default (db: Database, fastify: FastifyInstance) => {
   const FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/realisations/`
@@ -179,5 +180,51 @@ export default (db: Database, fastify: FastifyInstance) => {
     }
   }
 
-  return { findAll, findById, create, update, deleteById }
+  const like = async (
+    req: FastifyRequest<{ Body: RealisationPostLikeBodySchemaInterface }>
+  ) => {
+    try {
+      await db.realisations.increment(
+        {
+          likes: 1,
+        },
+        {
+          where: {
+            id: req.body.id,
+          },
+        }
+      )
+
+      return {
+        success: true,
+      }
+    } catch (err) {
+      throw internalServerError()
+    }
+  }
+
+  const unlike = async (
+    req: FastifyRequest<{ Body: RealisationPostLikeBodySchemaInterface }>
+  ) => {
+    try {
+      await db.realisations.increment(
+        {
+          likes: -1,
+        },
+        {
+          where: {
+            id: req.body.id,
+          },
+        }
+      )
+
+      return {
+        success: true,
+      }
+    } catch (err) {
+      throw internalServerError()
+    }
+  }
+
+  return { findAll, findById, create, update, deleteById, like, unlike }
 }

@@ -1,0 +1,11 @@
+{
+  "title": "Realisation Post Like Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    }
+  },
+  "required": ["id"],
+  "additionalProperties": false
+}
