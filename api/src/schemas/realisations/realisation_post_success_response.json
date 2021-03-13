@@ -1,5 +1,5 @@
 {
-  "title": "Post Success Response Schema Interface",
+  "title": "Realisation Post Success Response Schema Interface",
   "type": "object",
   "properties": {
     "success": {
@@ -9,7 +9,7 @@
       "type": "string"
     },
     "data": {
-      "$ref": "http://localhost/api/schemas/realisationAndSkill.json"
+      "$ref": "http://localhost/api/schemas/realisations/realisation.json"
     }
   }
 }

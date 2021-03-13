@@ -1,5 +1,5 @@
 {
-  "title": "Get Success Response Schema Interface",
+  "title": "Competence Get Success Response Schema Interface",
   "type": "object",
   "properties": {
     "success": {
@@ -8,7 +8,7 @@
     "data": {
       "type": "array",
       "items": {
-        "$ref": "http://localhost/api/schemas/realisationAndSkill.json"
+        "$ref": "http://localhost/api/schemas/competences/competence.json"
       }
     },
     "total": {

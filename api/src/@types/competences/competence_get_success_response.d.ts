@@ -5,9 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface PostSuccessResponseSchemaInterface {
+export interface CompetenceGetSuccessResponseSchemaInterface {
   success?: boolean;
-  message?: string;
   data?: {
     id?: number;
     titre?: string;
@@ -16,6 +15,7 @@ export interface PostSuccessResponseSchemaInterface {
     createdAt?: string;
     updatedAt?: string;
     [k: string]: unknown;
-  };
+  }[];
+  total?: number;
   [k: string]: unknown;
 }

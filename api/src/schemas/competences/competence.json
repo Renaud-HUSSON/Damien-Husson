@@ -1,0 +1,25 @@
+{
+  "$id": "http://localhost/api/schemas/competences/competence.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "minimum": 0
+    },
+    "titre": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  }
+}

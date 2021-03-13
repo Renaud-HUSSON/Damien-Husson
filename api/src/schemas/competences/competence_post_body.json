@@ -1,0 +1,14 @@
+{
+  "title": "Competence Post Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": ["titre", "description"],
+  "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Realisation Get Single Success Response Schema Interface",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "$ref": "http://localhost/api/schemas/realisations/realisation.json"
+    }
+  }
+}

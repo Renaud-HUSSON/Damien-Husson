@@ -3,16 +3,16 @@ import db from '../../config/Database'
 import multer from 'fastify-multer'
 import RealisationsController from '../../controllers/CompetencesController'
 import GetQueryStringSchema from '../../schemas/get_querystring.json'
-import PostBodySchema from '../../schemas/post_body.json'
-import PatchBodySchema from '../../schemas/patch_body.json'
+import RealisationPostBodySchema from '../../schemas/realisations/realisation_post_body.json'
+import RealisationPatchBodySchema from '../../schemas/realisations/realisation_patch_body.json'
 import ParamsSchema from '../../schemas/params.json'
 import DeleteQuerystringSchema from '../../schemas/delete_querystring.json'
-import GetSuccessResponseSchema from '../../schemas/get_success_response.json'
-import PostSuccessResponseSchema from '../../schemas/post_success_response.json'
+import RealisationGetSuccessResponseSchema from '../../schemas/realisations/realisation_get_success_response.json'
+import RealisationPostSuccessResponseSchema from '../../schemas/realisations/realisation_post_success_response.json'
 import ErrorResponseSchema from '../../schemas/error_response.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
-import RealisationAndSkillSchema from '../../schemas/realisationAndSkill.json'
-import GetSingleSuccessResponse from '../../schemas/get_single_success_response.json'
+import RealisationSchema from '../../schemas/realisations/realisation.json'
+import RealisationGetSingleSuccessResponse from '../../schemas/realisations/realisation_get_single_success_response.json'
 import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
 
 const upload = multer()
@@ -26,7 +26,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
     deleteById,
   } = RealisationsController(db, fastify)
 
-  fastify.addSchema(RealisationAndSkillSchema)
+  fastify.addSchema(RealisationSchema)
 
   fastify.get(
     '/',
@@ -34,7 +34,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
       schema: {
         querystring: GetQueryStringSchema,
         response: {
-          '2xx': GetSuccessResponseSchema,
+          '2xx': RealisationGetSuccessResponseSchema,
           '5xx': ErrorResponseSchema,
         },
       },
@@ -47,7 +47,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
     {
       schema: {
         response: {
-          '2xx': GetSingleSuccessResponse,
+          '2xx': RealisationGetSingleSuccessResponse,
           '4xx': ErrorResponseSchema,
           '5xx': ErrorResponseSchema,
         },
@@ -64,9 +64,9 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
       {
         preValidation: upload.single('image'),
         schema: {
-          body: PostBodySchema,
+          body: RealisationPostBodySchema,
           response: {
-            '2xx': PostSuccessResponseSchema,
+            '2xx': RealisationPostSuccessResponseSchema,
             '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
@@ -80,7 +80,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
       {
         preValidation: upload.single('image'),
         schema: {
-          body: PatchBodySchema,
+          body: RealisationPatchBodySchema,
           params: ParamsSchema,
           response: {
             '2xx': PatchSuccessResponseSchema,

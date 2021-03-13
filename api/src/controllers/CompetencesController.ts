@@ -8,10 +8,10 @@ import {
 } from '../utils/file'
 import { GetQueryStringSchemaInterface } from '../@types/get_querystring'
 import { DeleteQueryStringSchemaInterface } from '../@types/delete_querystring'
-import { PostBodySchemaInterface } from '../@types/post_body'
-import { PatchBodySchemaInterface } from '../@types/patch_body'
+import { CompetencePostBodySchemaInterface } from '../@types/competences/competence_post_body'
+import { CompetencePatchBodySchemaInterface } from '../@types/competences/competence_patch_body'
 import { ParamsSchemaInterface } from '../@types/params'
-import { GetSuccessResponseSchemaInterface } from '../@types/get_success_response'
+import { CompetenceGetSuccessResponseSchemaInterface } from '../@types/competences/competence_get_success_response'
 
 export default (db: Database, fastify: FastifyInstance) => {
   const FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/competences/`
@@ -21,7 +21,7 @@ export default (db: Database, fastify: FastifyInstance) => {
   const findAll = async (
     req: FastifyRequest<{
       Querystring: GetQueryStringSchemaInterface
-      Response: GetSuccessResponseSchemaInterface
+      Response: CompetenceGetSuccessResponseSchemaInterface
     }>
   ) => {
     const { query } = req
@@ -68,7 +68,7 @@ export default (db: Database, fastify: FastifyInstance) => {
 
   const create = async (
     req: FastifyRequest<
-      { Body: PostBodySchemaInterface },
+      { Body: CompetencePostBodySchemaInterface },
       Server,
       IncomingMessage
     >
@@ -105,7 +105,7 @@ export default (db: Database, fastify: FastifyInstance) => {
 
   const update = async (
     req: FastifyRequest<{
-      Body: PatchBodySchemaInterface
+      Body: CompetencePatchBodySchemaInterface
       Params: ParamsSchemaInterface
     }>
   ) => {

@@ -5,7 +5,12 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface PatchBodySchemaInterface {
+export interface Competence {
+  id?: number;
   titre?: string;
+  image?: string;
   description?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  [k: string]: unknown;
 }

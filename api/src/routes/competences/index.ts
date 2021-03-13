@@ -3,16 +3,16 @@ import db from '../../config/Database'
 import multer from 'fastify-multer'
 import CompetencesController from '../../controllers/CompetencesController'
 import GetQueryStringSchema from '../../schemas/get_querystring.json'
-import PostBodySchema from '../../schemas/post_body.json'
-import PatchBodySchema from '../../schemas/patch_body.json'
+import CompetencePostBodySchema from '../../schemas/competences/competence_post_body.json'
+import CompetencePatchBodySchema from '../../schemas/competences/competence_patch_body.json'
 import ParamsSchema from '../../schemas/params.json'
 import DeleteQuerystringSchema from '../../schemas/delete_querystring.json'
-import GetSuccessResponseSchema from '../../schemas/get_success_response.json'
-import PostSuccessResponseSchema from '../../schemas/post_success_response.json'
+import CompetenceGetSuccessResponseSchema from '../../schemas/competences/competence_get_success_response.json'
+import CompetencePostSuccessResponseSchema from '../../schemas/competences/competence_post_success_response.json'
 import ErrorResponseSchema from '../../schemas/error_response.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
-import RealisationAndSkillSchema from '../../schemas/realisationAndSkill.json'
-import GetSingleSuccessResponse from '../../schemas/get_single_success_response.json'
+import CompetenceSchema from '../../schemas/competences/competence.json'
+import CompetenceGetSingleSuccessResponse from '../../schemas/competences/competence_get_single_success_response.json'
 import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
 
 const upload = multer()
@@ -26,7 +26,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
     deleteById,
   } = CompetencesController(db, fastify)
 
-  fastify.addSchema(RealisationAndSkillSchema)
+  fastify.addSchema(CompetenceSchema)
 
   fastify.get(
     '/',
@@ -34,7 +34,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
       schema: {
         querystring: GetQueryStringSchema,
         response: {
-          '2xx': GetSuccessResponseSchema,
+          '2xx': CompetenceGetSuccessResponseSchema,
           '5xx': ErrorResponseSchema,
         },
       },
@@ -47,7 +47,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
     {
       schema: {
         response: {
-          '2xx': GetSingleSuccessResponse,
+          '2xx': CompetenceGetSingleSuccessResponse,
           '4xx': ErrorResponseSchema,
           '5xx': ErrorResponseSchema,
         },
@@ -64,9 +64,9 @@ const competencesRoute = async (fastify: FastifyInstance) => {
       {
         preValidation: upload.single('image'),
         schema: {
-          body: PostBodySchema,
+          body: CompetencePostBodySchema,
           response: {
-            '2xx': PostSuccessResponseSchema,
+            '2xx': CompetencePostSuccessResponseSchema,
             '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
@@ -80,7 +80,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
       {
         preValidation: upload.single('image'),
         schema: {
-          body: PatchBodySchema,
+          body: CompetencePatchBodySchema,
           params: ParamsSchema,
           response: {
             '2xx': PatchSuccessResponseSchema,

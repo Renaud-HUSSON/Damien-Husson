@@ -5,17 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface GetSuccessResponseSchemaInterface {
+export interface RealisationGetSingleSuccessResponseSchemaInterface {
   success?: boolean;
   data?: {
     id?: number;
     titre?: string;
     image?: string;
     description?: string;
+    likes?: number;
     createdAt?: string;
     updatedAt?: string;
     [k: string]: unknown;
-  }[];
-  total?: number;
+  };
   [k: string]: unknown;
 }
