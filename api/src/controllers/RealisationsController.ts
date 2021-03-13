@@ -28,9 +28,7 @@ export default (db: Database, fastify: FastifyInstance) => {
     const { query } = req
 
     try {
-      const realisations = await db.realisations.findAndCountAll({
-        ...query,
-      })
+      const realisations = await db.realisations.findAndCountAll(query)
 
       return {
         success: true,
@@ -43,36 +41,30 @@ export default (db: Database, fastify: FastifyInstance) => {
   }
 
   const findById = async (
-    req: FastifyRequest<
-      { Params: ParamsSchemaInterface },
-      Server,
-      IncomingMessage
-    >
+    req: FastifyRequest<{ Params: ParamsSchemaInterface }>
   ) => {
     const { id } = req.params
 
+    let realisation
+
     try {
-      const realisation = await db.realisations.findByPk(id)
-
-      if (!realisation) {
-        throw notFound('La ressource est introuvable')
-      }
-
-      return {
-        success: true,
-        data: realisation,
-      }
+      realisation = await db.realisations.findByPk(id)
     } catch (err) {
       throw internalServerError(`Une erreur est survenue: ${err}`)
+    }
+
+    if (!realisation) {
+      throw notFound('La ressource est introuvable')
+    }
+
+    return {
+      success: true,
+      data: realisation,
     }
   }
 
   const create = async (
-    req: FastifyRequest<
-      { Body: RealisationPostBodySchemaInterface },
-      Server,
-      IncomingMessage
-    >
+    req: FastifyRequest<{ Body: RealisationPostBodySchemaInterface }>
   ) => {
     const file = req.file
 

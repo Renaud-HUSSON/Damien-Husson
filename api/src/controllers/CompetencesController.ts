@@ -27,14 +27,12 @@ export default (db: Database, fastify: FastifyInstance) => {
     const { query } = req
 
     try {
-      const realisations = await db.competences.findAndCountAll({
-        ...query,
-      })
+      const competences = await db.competences.findAndCountAll(query)
 
       return {
         success: true,
-        data: realisations.rows,
-        total: realisations.count,
+        data: competences.rows,
+        total: competences.count,
       }
     } catch (err) {
       throw internalServerError(`Une erreur est survenue: ${err}`)
@@ -42,36 +40,30 @@ export default (db: Database, fastify: FastifyInstance) => {
   }
 
   const findById = async (
-    req: FastifyRequest<
-      { Params: ParamsSchemaInterface },
-      Server,
-      IncomingMessage
-    >
+    req: FastifyRequest<{ Params: ParamsSchemaInterface }>
   ) => {
     const { id } = req.params
 
+    let competence
+
     try {
-      const realisation = await db.competences.findByPk(id)
-
-      if (!realisation) {
-        throw notFound('La ressource est introuvable')
-      }
-
-      return {
-        success: true,
-        data: realisation,
-      }
+      competence = await db.competences.findByPk(id)
     } catch (err) {
       throw internalServerError(`Une erreur est survenue: ${err}`)
+    }
+
+    if (!competence) {
+      throw notFound('La ressource est introuvable')
+    }
+
+    return {
+      success: true,
+      data: competence,
     }
   }
 
   const create = async (
-    req: FastifyRequest<
-      { Body: CompetencePostBodySchemaInterface },
-      Server,
-      IncomingMessage
-    >
+    req: FastifyRequest<{ Body: CompetencePostBodySchemaInterface }>
   ) => {
     const file = req.file
 
@@ -121,11 +113,11 @@ export default (db: Database, fastify: FastifyInstance) => {
 
     try {
       if (file) {
-        const realisation = await db.competences.findByPk(id)
+        const competence = await db.competences.findByPk(id)
 
-        if (realisation) {
+        if (competence) {
           await deleteOldFileAndCreateAnother(
-            realisation.dataValues.image,
+            competence.dataValues.image,
             `${FOLDER}${req.file.originalname}`,
             file.buffer!
           )
@@ -154,12 +146,12 @@ export default (db: Database, fastify: FastifyInstance) => {
     req: FastifyRequest<{ Querystring: DeleteQueryStringSchemaInterface }>
   ) => {
     try {
-      const realisations = await db.competences.findAll({
+      const competences = await db.competences.findAll({
         where: { id: req.query.id },
       })
 
-      for (let realisation of realisations) {
-        const imagePath = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}${realisation.dataValues.image}`
+      for (let competence of competences) {
+        const imagePath = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}${competence.dataValues.image}`
 
         await promisifiedDeleteFile(imagePath).catch((_e) => {})
       }
@@ -170,7 +162,7 @@ export default (db: Database, fastify: FastifyInstance) => {
 
       return {
         success: true,
-        message: 'Les réalisations ont bien été supprimées',
+        message: 'Les compétences ont bien été supprimées',
       }
     } catch (err) {
       throw internalServerError(
