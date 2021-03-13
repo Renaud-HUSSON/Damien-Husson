@@ -23,6 +23,9 @@ export default (sequelize: Sequelize): ModelCtor<Realisation> => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      likes: {
+        type: DataTypes.INTEGER.UNSIGNED,
+      },
     },
     {
       tableName: 'realisations',

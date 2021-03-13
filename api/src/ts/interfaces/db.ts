@@ -5,10 +5,11 @@ export interface RealisationAttributes {
   titre: string
   image: string
   description: string
+  likes: number
 }
 
 export interface RealisationCreationAttributes
-  extends Optional<RealisationAttributes, 'id'> {}
+  extends Optional<RealisationAttributes, 'id' | 'likes'> {}
 
 export interface Realisation
   extends Model<RealisationAttributes, RealisationCreationAttributes> {
