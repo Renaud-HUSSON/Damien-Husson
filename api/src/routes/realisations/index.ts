@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import db from '../../config/Database'
 import multer from 'fastify-multer'
-import RealisationsController from '../../controllers/Controller'
+import RealisationsController from '../../controllers/CompetencesController'
 import GetQueryStringSchema from '../../schemas/get_querystring.json'
 import PostBodySchema from '../../schemas/post_body.json'
 import PatchBodySchema from '../../schemas/patch_body.json'
@@ -24,7 +24,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
     create,
     update,
     deleteById,
-  } = RealisationsController(db, fastify, 'realisations')
+  } = RealisationsController(db, fastify)
 
   fastify.addSchema(RealisationAndSkillSchema)
 

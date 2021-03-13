@@ -13,8 +13,8 @@ import { PatchBodySchemaInterface } from '../@types/patch_body'
 import { ParamsSchemaInterface } from '../@types/params'
 import { GetSuccessResponseSchemaInterface } from '../@types/get_success_response'
 
-export default (db: Database, fastify: FastifyInstance, table: string) => {
-  const FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/${table}/`
+export default (db: Database, fastify: FastifyInstance) => {
+  const FOLDER = `${process.env.FASTIFY_PUBLIC_IMAGE_PATH}images/realisations/`
 
   const { internalServerError, badRequest, notFound } = fastify.httpErrors
 
@@ -27,7 +27,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     const { query } = req
 
     try {
-      const realisations = await db[table].findAndCountAll({
+      const realisations = await db.realisations.findAndCountAll({
         ...query,
       })
 
@@ -51,7 +51,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     const { id } = req.params
 
     try {
-      const realisation = await db[table].findByPk(id)
+      const realisation = await db.realisations.findByPk(id)
 
       if (!realisation) {
         throw notFound('La ressource est introuvable')
@@ -79,7 +79,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
       throw badRequest('Vous devez préciser une image')
     }
 
-    const imagePath = `/images/${table}/${req.file.originalname}`
+    const imagePath = `/images/realisations/${req.file.originalname}`
 
     //Stores the image or returns an error
     try {
@@ -87,7 +87,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
         `${FOLDER}${req.file.originalname}`,
         req.file?.buffer!
       )
-      const { dataValues: data } = await db[table].create({
+      const { dataValues: data } = await db.realisations.create({
         ...req.body,
         image: imagePath,
       })
@@ -112,7 +112,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     const { file } = req
     const { id } = req.params
 
-    const imagePath = `/images/${table}/${req.file.originalname}`
+    const imagePath = `/images/realisations/${req.file.originalname}`
 
     const values = {
       ...req.body,
@@ -121,7 +121,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
 
     try {
       if (file) {
-        const realisation = await db[table].findByPk(id)
+        const realisation = await db.realisations.findByPk(id)
 
         if (realisation) {
           await deleteOldFileAndCreateAnother(
@@ -132,7 +132,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
         }
       }
 
-      const data = await db[table].update(values, {
+      const data = await db.realisations.update(values, {
         where: { id },
       })
 
@@ -154,7 +154,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
     req: FastifyRequest<{ Querystring: DeleteQueryStringSchemaInterface }>
   ) => {
     try {
-      const realisations = await db[table].findAll({
+      const realisations = await db.realisations.findAll({
         where: { id: req.query.id },
       })
 
@@ -164,7 +164,7 @@ export default (db: Database, fastify: FastifyInstance, table: string) => {
         await promisifiedDeleteFile(imagePath).catch((_e) => {})
       }
 
-      await db[table].destroy({
+      await db.realisations.destroy({
         where: { id: req.query.id },
       })
 

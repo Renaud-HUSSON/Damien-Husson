@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import db from '../../config/Database'
 import multer from 'fastify-multer'
-import Controller from '../../controllers/Controller'
+import CompetencesController from '../../controllers/CompetencesController'
 import GetQueryStringSchema from '../../schemas/get_querystring.json'
 import PostBodySchema from '../../schemas/post_body.json'
 import PatchBodySchema from '../../schemas/patch_body.json'
@@ -18,11 +18,13 @@ import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.j
 const upload = multer()
 
 const competencesRoute = async (fastify: FastifyInstance) => {
-  const { findAll, findById, create, update, deleteById } = Controller(
-    db,
-    fastify,
-    'competences'
-  )
+  const {
+    findAll,
+    findById,
+    create,
+    update,
+    deleteById,
+  } = CompetencesController(db, fastify)
 
   fastify.addSchema(RealisationAndSkillSchema)
 
