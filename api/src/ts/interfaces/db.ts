@@ -58,10 +58,19 @@ export interface RefreshToken
   dataValues: RefreshTokenAttributes
 }
 
+export interface CategorieAttributes {
+  id: number
+  nom: string
+}
+
+export interface Categorie extends Model<CategorieAttributes, 'id'> {
+  dataValues: CategorieAttributes
+}
 export interface Database {
   sequelize: Sequelize
   realisations: ModelCtor<Realisation>
   competences: ModelCtor<Competence>
   utilisateurs: ModelCtor<Utilisateur>
   refreshTokens: ModelCtor<RefreshToken>
+  categories: ModelCtor<Categorie>
 }

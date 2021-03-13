@@ -6,6 +6,7 @@ import UserModel from '../models/UtilisateurModel'
 import RefreshTokenModel from '../models/RefreshTokenModel'
 import bcrypt from 'bcrypt'
 import { config } from 'dotenv'
+import { CategorieModel } from '../models/CategorieModel'
 config()
 
 const DB_DATABASE = process.env.DB_DATABASE ?? 'damien'
@@ -36,10 +37,20 @@ const db: Database = {
   competences: CompetenceModel(sequelize),
   utilisateurs: UserModel(sequelize),
   refreshTokens: RefreshTokenModel(sequelize),
+  categories: CategorieModel(sequelize),
 }
 
 db.utilisateurs.hasMany(db.refreshTokens)
 db.refreshTokens.belongsTo(db.utilisateurs)
+
+db.realisations.belongsToMany(db.categories, {
+  through: 'realisationsCategories',
+  foreignKey: 'realisationId',
+})
+db.categories.belongsToMany(db.realisations, {
+  through: 'realisationsCategories',
+  foreignKey: 'categorieId',
+})
 
 initUsers()
 
