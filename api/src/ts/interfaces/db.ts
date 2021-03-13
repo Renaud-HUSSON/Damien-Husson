@@ -63,7 +63,11 @@ export interface CategorieAttributes {
   nom: string
 }
 
-export interface Categorie extends Model<CategorieAttributes, 'id'> {
+export interface CategorieCreationAttributes
+  extends Optional<CategorieAttributes, 'id'> {}
+
+export interface Categorie
+  extends Model<CategorieAttributes, CategorieCreationAttributes> {
   dataValues: CategorieAttributes
 }
 export interface Database {
