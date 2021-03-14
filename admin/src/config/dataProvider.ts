@@ -5,12 +5,18 @@ const API_URL = '/api/'
 
 export const dataProvider: DataProvider = {
   getList: async (resource, params) => {
+    let filters = ''
+
+    for (let filter in params.filter) {
+      filters += `where.${filter}=${params.filter[filter]}&`
+    }
+
     const data = await fetch(
       `${API_URL}${resource}?offset=${
         (params.pagination.page - 1) * params.pagination.perPage
       }&limit=${params.pagination.perPage}&order[0][]=${
         params.sort.field
-      }&order[0][]=${params.sort.order}`
+      }&order[0][]=${params.sort.order}&${filters}`
     ).then((res) => res.json())
 
     return {
@@ -28,11 +34,9 @@ export const dataProvider: DataProvider = {
     }
   },
   getMany: async (resource, params) => {
-    const ids = params.ids.toString()
-
-    const data = await fetch(`${resource}${resource}/id[]=${ids}`).then((res) =>
-      res.json()
-    )
+    const data = await fetch(
+      `${API_URL}${resource}?where.id=${params.ids[0]}`
+    ).then((res) => res.json())
 
     return {
       data: data.data,
