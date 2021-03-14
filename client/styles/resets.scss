@@ -2,13 +2,16 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Poppins;
+  cursor: url('../public/assets/circle-cursor.png'), auto;
 }
 
 html {
+  cursor: url('../public/assets/circle-cursor.png'), auto;
   scroll-behavior: smooth;
 }
 
 body {
+  cursor: url('../public/assets/circle-cursor.png'), auto;
   padding: 0 var(--bodyPadding);
   width: 100vw;
   overflow-x: hidden;
