@@ -18,6 +18,10 @@
     "likes": {
       "type": "number"
     },
+    "categorieId": {
+      "type": "number",
+      "minimum": 0
+    },
     "createdAt": {
       "type": "string"
     },

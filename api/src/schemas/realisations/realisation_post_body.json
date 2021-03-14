@@ -7,6 +7,10 @@
     },
     "description": {
       "type": "string"
+    },
+    "categorieId": {
+      "type": "number",
+      "minimum": 0
     }
   },
   "required": ["titre", "description"],

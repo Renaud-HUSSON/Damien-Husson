@@ -11,6 +11,7 @@ export interface Realisation {
   image?: string;
   description?: string;
   likes?: number;
+  categorieId?: number;
   createdAt?: string;
   updatedAt?: string;
   [k: string]: unknown;
