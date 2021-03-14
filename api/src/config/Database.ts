@@ -43,12 +43,8 @@ const db: Database = {
 db.utilisateurs.hasMany(db.refreshTokens)
 db.refreshTokens.belongsTo(db.utilisateurs)
 
-db.realisations.belongsToMany(db.categories, {
-  through: 'realisationsCategories',
-  foreignKey: 'realisationId',
-})
-db.categories.belongsToMany(db.realisations, {
-  through: 'realisationsCategories',
+db.categories.hasMany(db.realisations)
+db.realisations.belongsTo(db.categories, {
   foreignKey: 'categorieId',
 })
 

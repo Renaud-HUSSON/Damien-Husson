@@ -28,7 +28,10 @@ export default (db: Database, fastify: FastifyInstance) => {
     const { query } = req
 
     try {
-      const realisations = await db.realisations.findAndCountAll(query)
+      const realisations = await db.realisations.findAndCountAll({
+        ...query,
+        include: db.categories,
+      })
 
       return {
         success: true,
