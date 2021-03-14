@@ -25,6 +25,7 @@ export default (sequelize: Sequelize): ModelCtor<Realisation> => {
       },
       likes: {
         type: DataTypes.INTEGER.UNSIGNED,
+        defaultValue: 0,
       },
     },
     {
