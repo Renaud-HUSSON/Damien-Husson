@@ -9,11 +9,15 @@ import { CompetencesCreate } from './components/Competences/Create'
 import { CompetencesEdit } from './components/Competences/Edit'
 import CompetencesIcon from '@material-ui/icons/BookmarkBorder'
 import { authProvider } from './config/authProvider'
+import { CategoriesCreate } from './components/Categories/Create'
+import { CategoriesEdit } from './components/Categories/Edit'
+import { CategoriesList } from './components/Categories/List'
 
 const App = () => {
   return (
     <Admin dataProvider={dataProvider} authProvider={authProvider}>
       <Resource
+        options={{ label: 'Réalisations' }}
         name='realisations'
         list={RealisationsList}
         create={RealisationsCreate}
@@ -21,11 +25,19 @@ const App = () => {
         icon={RealisationsIcon}
       />
       <Resource
+        options={{ label: 'Compétences' }}
         name='competences'
         list={CompetencesList}
         create={CompetencesCreate}
         edit={CompetencesEdit}
         icon={CompetencesIcon}
+      />
+      <Resource
+        options={{ label: 'Catégories' }}
+        name='categories'
+        list={CategoriesList}
+        create={CategoriesCreate}
+        edit={CategoriesEdit}
       />
     </Admin>
   )

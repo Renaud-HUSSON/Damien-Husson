@@ -4,6 +4,8 @@ import {
   CreateProps,
   ImageField,
   ImageInput,
+  ReferenceInput,
+  SelectInput,
   SimpleForm,
   TextInput,
 } from 'ra-ui-materialui'
@@ -13,6 +15,14 @@ export const RealisationsCreate = (props: CreateProps) => {
     <Create {...props}>
       <SimpleForm>
         <TextInput source='titre' validate={[required()]} />
+        <ReferenceInput
+          label='Catégorie'
+          perPage={10000}
+          source='categorieId'
+          reference='categories'
+        >
+          <SelectInput source='id' optionText='nom' />
+        </ReferenceInput>
         <ImageInput
           label='Image'
           source='image'
