@@ -11,6 +11,9 @@ import ParamsSchema from '../../schemas/params.json'
 import PatchSuccessResponseSchema from '../../schemas/patch_success_response.json'
 import DeleteSuccessResponseSchema from '../../schemas/delete_success_response.json'
 import DeleteQuerystringSchema from '../../schemas/delete_querystring.json'
+import multer from 'fastify-multer'
+
+const upload = multer()
 
 const CategoriesRoute = async (fastify: FastifyInstance) => {
   const {
@@ -57,6 +60,7 @@ const CategoriesRoute = async (fastify: FastifyInstance) => {
     fastify.post(
       '/',
       {
+        preValidation: upload.single(''),
         schema: {
           body: CategoriePostPatchBodySchema,
           response: {
@@ -71,6 +75,7 @@ const CategoriesRoute = async (fastify: FastifyInstance) => {
     fastify.patch(
       '/:id',
       {
+        preValidation: upload.single(''),
         schema: {
           body: CategoriePostPatchBodySchema,
           params: ParamsSchema,
