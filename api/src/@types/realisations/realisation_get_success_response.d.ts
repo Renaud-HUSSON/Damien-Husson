@@ -14,6 +14,11 @@ export interface RealisationGetSuccessResponseSchemaInterface {
     description?: string;
     likes?: number;
     categorieId?: number;
+    Category?: {
+      id?: number;
+      nom?: string;
+      [k: string]: unknown;
+    } | null;
     createdAt?: string;
     updatedAt?: string;
     [k: string]: unknown;

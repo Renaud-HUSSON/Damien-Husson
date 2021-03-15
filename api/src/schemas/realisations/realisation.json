@@ -22,6 +22,18 @@
       "type": "number",
       "minimum": 0
     },
+    "Category": {
+      "type": ["object", "null"],
+      "optional": true,
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "nom": {
+          "type": "string"
+        }
+      }
+    },
     "createdAt": {
       "type": "string"
     },
