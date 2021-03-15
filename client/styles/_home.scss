@@ -149,12 +149,12 @@
       content: 'PORTFOLIO';
     }
 
-    > div {
+    .home__realisations__grid {
       padding: var(--sectionSeparator);
       column-count: 3;
       column-gap: 1.5rem;
 
-      .home__realisations__item {
+      .home__realisations__grid__item {
         position: relative;
         border-radius: 1rem;
         display: inline-block;
@@ -192,6 +192,26 @@
           img {
             filter: brightness(0.25);
           }
+        }
+      }
+    }
+    .home__realisations__filter {
+      display: flex;
+      gap: 1.5rem;
+      width: fit-content;
+      margin: auto;
+
+      > div {
+        border: 1px solid var(--purple);
+        padding: 0.25rem 0.5rem;
+        border-radius: 10px;
+        color: var(--purple);
+        transition: 0.3s;
+
+        &:hover,
+        &.selected {
+          color: white;
+          background-color: var(--purple);
         }
       }
     }
