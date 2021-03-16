@@ -1,8 +1,22 @@
+import { useInView } from 'react-intersection-observer'
+
 export const Presentation = () => {
+  const options = {
+    triggerOnce: true,
+    threshold: 0.1,
+  }
+
+  const { ref, inView } = useInView(options)
+
   return (
     <>
       <div id='presentation'></div>
-      <section className='home__presentation'>
+      <section
+        className={`home__presentation ${
+          inView && 'home__presentation__visible'
+        }`}
+        ref={ref}
+      >
         <h2>Présentation</h2>
         <div>
           <p>
