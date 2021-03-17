@@ -112,41 +112,45 @@
   .home__presentation {
     overflow: hidden;
 
-    h2::before {
-      content: 'A PROPOS';
-    }
+    > div {
+      transform: translateX(-100%);
 
-    div {
-      padding: var(--sectionSeparator);
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-
-      p {
-        font-size: 1.5rem;
+      h2::before {
+        content: 'A PROPOS';
       }
-    }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-image: linear-gradient(
-        to bottom right,
-        var(--purple),
-        var(--lightPurple)
-      );
-      visibility: hidden;
-    }
+      div {
+        padding: var(--sectionSeparator);
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
 
-    &.home__presentation__visible {
-      animation: appear-from-left forwards 1s ease-in-out;
+        p {
+          font-size: 1.5rem;
+        }
+      }
 
       &::after {
-        animation: appear-from-left_after forwards 1s ease-in-out;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(
+          to bottom right,
+          var(--purple),
+          var(--lightPurple)
+        );
+        visibility: hidden;
+      }
+
+      &.home__presentation__visible {
+        animation: appear-from-left forwards 1s ease-in-out;
+
+        &::after {
+          animation: appear-from-left_after forwards 1s ease-in-out;
+        }
       }
     }
   }
@@ -156,44 +160,48 @@
     overflow: hidden;
     position: relative;
 
-    h2::before {
-      content: 'SERVICES';
-    }
+    > div {
+      transform: translateX(100%);
 
-    .home__competences__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5rem;
-      padding: var(--sectionSeparator);
-
-      > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+      h2::before {
+        content: 'SERVICES';
       }
-    }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-image: linear-gradient(
-        to bottom left,
-        var(--purple),
-        var(--lightPurple)
-      );
-      visibility: hidden;
-    }
+      .home__competences__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5rem;
+        padding: var(--sectionSeparator);
 
-    &.home__competences__visible {
-      animation: appear-from-right forwards 1s ease-in-out;
+        > div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+        }
+      }
 
       &::after {
-        animation: appear-from-right_after forwards 1s ease-in-out;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(
+          to bottom left,
+          var(--purple),
+          var(--lightPurple)
+        );
+        visibility: hidden;
+      }
+
+      &.home__competences__visible {
+        animation: appear-from-right forwards 1s ease-in-out;
+
+        &::after {
+          animation: appear-from-right_after forwards 1s ease-in-out;
+        }
       }
     }
   }
