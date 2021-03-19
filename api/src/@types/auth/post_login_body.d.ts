@@ -6,7 +6,7 @@
  */
 
 export interface PostLoginBodySchemaInterface {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
   [k: string]: unknown;
 }
