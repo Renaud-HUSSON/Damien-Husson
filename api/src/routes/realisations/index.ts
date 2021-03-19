@@ -68,6 +68,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
         body: RealisationPostLikeBody,
         response: {
           '2xx': RealisationPostLikeUnlikeSuccessResponse,
+          '4xx': ErrorResponseSchema,
           '5xx': ErrorResponseSchema,
         },
       },
@@ -82,6 +83,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
         body: RealisationPostUnlikeBody,
         response: {
           '2xx': RealisationPostLikeUnlikeSuccessResponse,
+          '4xx': ErrorResponseSchema,
           '5xx': ErrorResponseSchema,
         },
       },
@@ -100,6 +102,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
           body: RealisationPostBodySchema,
           response: {
             '2xx': RealisationPostSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },
@@ -116,6 +119,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
           params: ParamsSchema,
           response: {
             '2xx': PatchSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },
@@ -130,6 +134,7 @@ const realisationsRoute = async (fastify: FastifyInstance) => {
           querystring: DeleteQuerystringSchema,
           response: {
             '2xx': DeleteSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },

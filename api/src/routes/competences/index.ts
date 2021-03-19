@@ -67,6 +67,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
           body: CompetencePostBodySchema,
           response: {
             '2xx': CompetencePostSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },
@@ -83,6 +84,7 @@ const competencesRoute = async (fastify: FastifyInstance) => {
           params: ParamsSchema,
           response: {
             '2xx': PatchSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },

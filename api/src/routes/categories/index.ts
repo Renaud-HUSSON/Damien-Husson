@@ -65,6 +65,7 @@ const CategoriesRoute = async (fastify: FastifyInstance) => {
           body: CategoriePostPatchBodySchema,
           response: {
             '2xx': CategoriePostSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },
@@ -81,6 +82,7 @@ const CategoriesRoute = async (fastify: FastifyInstance) => {
           params: ParamsSchema,
           response: {
             '2xx': PatchSuccessResponseSchema,
+            '4xx': ErrorResponseSchema,
             '5xx': ErrorResponseSchema,
           },
         },
