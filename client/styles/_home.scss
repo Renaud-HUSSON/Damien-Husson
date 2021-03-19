@@ -453,7 +453,7 @@
       }
     }
 
-    .home__competences .home__competences__grid {
+    .home__competences > div .home__competences__grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -482,6 +482,16 @@
 
     .home__realisations > .home__realisations__grid {
       column-count: 1;
+
+      .home__realisations__grid__item {
+        > div {
+          display: none;
+        }
+
+        &:hover img {
+          filter: none;
+        }
+      }
     }
 
     footer .home__contact {
@@ -528,15 +538,15 @@
       }
     }
 
-    .home__presentation > div {
-      padding: 3rem 0;
+    .home__presentation > div div {
+      padding: 0;
 
       p {
         font-size: 1rem;
       }
     }
 
-    .home__competences .home__competences__grid {
+    .home__competences > div .home__competences__grid {
       padding: 3rem 0;
       grid-template-columns: 1fr;
       gap: 3rem;
