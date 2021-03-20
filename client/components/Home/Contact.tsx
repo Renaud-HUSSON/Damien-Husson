@@ -29,7 +29,7 @@ export const Contact = () => {
             <a href='mailto:damien.husson@etud.univ-tln.fr'>
               damien.husson@etud.univ-tln.fr
             </a>
-            <p>06 78 91 02 75</p>
+            <p>06 78 91 55 78</p>
             <div>
               <Socials />
             </div>
