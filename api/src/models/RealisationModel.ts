@@ -20,7 +20,7 @@ export default (sequelize: Sequelize): ModelCtor<Realisation> => {
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       likes: {
