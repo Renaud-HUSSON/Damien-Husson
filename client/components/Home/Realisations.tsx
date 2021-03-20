@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Dispatch, MouseEventHandler, SetStateAction } from 'react'
-import { Categorie, Realisation } from '../..'
+import { Categorie, Realisation, ShowRealisation } from '../..'
 import { FilterRealisations } from './FilterRealisations'
 
 interface RealisationsProps {
@@ -8,6 +8,7 @@ interface RealisationsProps {
   categories: Categorie[]
   displayedRealisations: Realisation[]
   setDisplayedRealisations: Dispatch<SetStateAction<Realisation[]>>
+  setShowRealisation: Dispatch<SetStateAction<ShowRealisation>>
 }
 
 export const Realisations = ({
@@ -15,6 +16,7 @@ export const Realisations = ({
   categories,
   displayedRealisations,
   setDisplayedRealisations,
+  setShowRealisation,
 }: RealisationsProps) => {
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const element = e.target
@@ -50,6 +52,18 @@ export const Realisations = ({
     element.style.transition = '0s'
   }
 
+  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    const target = e.target
+
+    if (!(target instanceof HTMLDivElement)) return
+    if (!target.dataset.id) return
+
+    setShowRealisation({
+      active: true,
+      realisationId: parseInt(target.dataset.id),
+    })
+  }
+
   return (
     <>
       <div id='realisations'></div>
@@ -61,7 +75,7 @@ export const Realisations = ({
           setDisplayedRealisations={setDisplayedRealisations}
         />
         <div className='home__realisations__grid'>
-          {displayedRealisations.map((realisation) => {
+          {displayedRealisations.map((realisation, i) => {
             return (
               <div
                 onMouseMove={handleMouseMove}
@@ -69,13 +83,13 @@ export const Realisations = ({
                 onMouseEnter={handleMouseEnter}
                 className='home__realisations__grid__item'
                 key={realisation.id}
+                data-id={realisation.id}
+                onClick={handleClick}
               >
                 <div>
                   <h3>{realisation.titre}</h3>
                 </div>
-                <Link href={`/realisations/${realisation.id}`}>
-                  <img src={realisation.image} alt={realisation.titre} />
-                </Link>
+                <img src={realisation.image} alt={realisation.titre} />
               </div>
             )
           })}

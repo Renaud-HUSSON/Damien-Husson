@@ -25,3 +25,8 @@ export interface Categorie {
   createdAt: string
   updatedAt: string
 }
+
+export interface ShowRealisation {
+  active: boolean
+  realisationId: number | undefined
+}

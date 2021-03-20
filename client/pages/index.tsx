@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
-import { Competence, Realisation } from '..'
+import { useEffect, useState } from 'react'
+import { Categorie, Competence, Realisation, ShowRealisation } from '..'
 import { Header } from '../components/Header'
 import { Banner } from '../components/Home/Banner'
 import { Competences } from '../components/Home/Competences'
@@ -7,13 +8,40 @@ import { Contact } from '../components/Home/Contact'
 import { Presentation } from '../components/Home/Presentation'
 import { Realisations } from '../components/Home/Realisations'
 import { Socials } from '../components/Home/Socials'
+import { RealisationModal } from '../components/Home/RealisationModal'
 
 interface HomeProps {
   competences: Competence[]
-  realisations: Realisation[]
+  realisationsData: Realisation[]
+  categories: Categorie[]
 }
 
-export default function Home({ competences, realisations }: HomeProps) {
+export default function Home({
+  competences,
+  realisationsData,
+  categories,
+}: HomeProps) {
+  const [realisations, setRealisations] = useState<Realisation[]>(
+    realisationsData
+  )
+
+  const [displayedRealisations, setDisplayedRealisations] = useState<
+    Realisation[]
+  >(realisationsData)
+
+  const [showRealisation, setShowRealisation] = useState<ShowRealisation>({
+    active: false,
+    realisationId: undefined,
+  })
+
+  useEffect(() => {
+    if (showRealisation.active) {
+      document.body.setAttribute('disable-scroll', 'true')
+    } else {
+      document.body.setAttribute('disable-scroll', 'false')
+    }
+  }, [showRealisation])
+
   return (
     <div className='home'>
       <img src='/assets/banner.png' alt='Banner' />
@@ -24,7 +52,19 @@ export default function Home({ competences, realisations }: HomeProps) {
       <Banner />
       <Presentation />
       <Competences competences={competences} />
-      <Realisations realisations={realisations} />
+      <Realisations
+        realisations={realisations}
+        categories={categories}
+        setDisplayedRealisations={setDisplayedRealisations}
+        displayedRealisations={displayedRealisations}
+        setShowRealisation={setShowRealisation}
+      />
+      <RealisationModal
+        displayedRealisations={displayedRealisations}
+        showRealisation={showRealisation}
+        setShowRealisation={setShowRealisation}
+        setRealisations={setRealisations}
+      />
       <Contact />
     </div>
   )
@@ -37,11 +77,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const competences = await fetch(
     `${process.env.API_URL}competences`
   ).then((res) => res.json())
+  const categories = await fetch(
+    `${process.env.API_URL}categories`
+  ).then((res) => res.json())
 
   return {
     props: {
       competences: competences.data,
-      realisations: realisations.data,
+      realisationsData: realisations.data,
+      categories: categories.data,
     },
     revalidate: 1,
   }
