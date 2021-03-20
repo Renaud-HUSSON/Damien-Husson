@@ -3,11 +3,10 @@ import { useInView } from 'react-intersection-observer'
 export const Presentation = () => {
   const options = {
     triggerOnce: true,
+    threshold: 0,
   }
 
   const { ref, inView } = useInView(options)
-
-  console.log(inView)
 
   return (
     <>

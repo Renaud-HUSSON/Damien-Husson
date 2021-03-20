@@ -8,7 +8,7 @@ interface CompetencesProps {
 export const Competences = ({ competences }: CompetencesProps) => {
   const options = {
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.4,
   }
 
   const { ref, inView } = useInView(options)
