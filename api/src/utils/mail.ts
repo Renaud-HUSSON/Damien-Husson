@@ -20,14 +20,14 @@ export const transporter = nodemailer.createTransport({
 export const sendMail = async (data: sendmailData, subject: string) => {
   return transporter.sendMail({
     from: '"Renaud HUSSON" <renaudhusson09@gmail.com>',
-    to: data.email,
+    to: 'damienhusson09@gmail.com',
     subject,
     text: data.message,
     html: `<h1>Nouveau message de <strong>${data.prenom} ${data.nom}</strong> bonhomme ! </h1></br>
   <p>Nom: ${data.nom}</p>
   <p>Prenom: ${data.prenom}</p>
   <p>Email: ${data.email}</p>
-  <p>Message: ${data.message}</p>
+  <pre><p>Message: ${data.message}</p></pre>
   `,
   })
 }
