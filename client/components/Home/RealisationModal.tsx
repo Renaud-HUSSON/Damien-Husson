@@ -59,18 +59,34 @@ export const RealisationModal = ({
         : router.query.realisationId
     )
 
-    displayedRealisations.some(
-      (realisation: Realisation) => realisation.id === realisationId
-    )
-      ? setShowRealisation({
-          active: true,
-          realisationId: realisationId,
-        })
-      : setShowRealisation({
-          active: false,
-          realisationId: undefined,
-        })
+    if (
+      displayedRealisations.some(
+        (realisation: Realisation) => realisation.id === realisationId
+      )
+    ) {
+      setShowRealisation({
+        active: true,
+        realisationId: realisationId,
+      })
+    } else {
+      setShowRealisation({
+        active: false,
+        realisationId: undefined,
+      })
+      router.push(router.pathname)
+    }
   }, [router])
+
+  useEffect(() => {
+    if (showRealisation.active === true) {
+      router.push(
+        `${router.pathname}?realisationId=${showRealisation.realisationId}`
+      )
+      return
+    }
+
+    router.push(router.pathname)
+  }, [showRealisation.realisationId])
 
   return (
     <div
