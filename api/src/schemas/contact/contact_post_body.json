@@ -1,0 +1,19 @@
+{
+  "title": "Contact Post Body Schema Interface",
+  "type": "object",
+  "properties": {
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": ["nom", "prenom", "email", "message"]
+}
