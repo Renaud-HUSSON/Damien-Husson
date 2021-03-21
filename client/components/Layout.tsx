@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface LayoutProps {
   children: ReactNode
 }
@@ -84,6 +85,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
         <meta name='theme-color' content='#ffffff' />
       </Head>
+      <ToastContainer />
       {children}
     </>
   )
