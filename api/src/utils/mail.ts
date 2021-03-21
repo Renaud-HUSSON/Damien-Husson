@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer'
 
-console.log(process.env)
-
 interface sendmailData {
   prenom: string
   nom: string
