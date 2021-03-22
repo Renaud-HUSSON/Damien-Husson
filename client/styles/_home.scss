@@ -481,6 +481,11 @@
       }
     }
 
+    .home__competences.home__competences__visible,
+    .home__presentation.home__presentation__visible {
+      animation: none;
+    }
+
     .home__realisations > .home__realisations__grid {
       column-count: 1;
 
