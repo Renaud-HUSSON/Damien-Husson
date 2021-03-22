@@ -7,6 +7,7 @@ import {
 } from 'react'
 import { Realisation, ShowRealisation } from '../..'
 import { LikeButton } from './LikeButton'
+import { Share } from './Share'
 
 interface TopBarProps {
   realisation: Realisation
@@ -149,25 +150,7 @@ export const TopBar = ({
           realisation={realisation}
           setRealisations={setRealisations}
         />
-        <div>
-          <svg
-            className='home__realisation__modal__topbar__share'
-            xmlns='http://www.w3.org/2000/svg'
-            width='22.459'
-            height='19.088'
-            viewBox='0 0 22.459 19.088'
-          >
-            <path
-              id='Icon_ionic-ios-share-alt'
-              data-name='Icon ionic-ios-share-alt'
-              d='M24.774,13.907,17.26,6.878a.384.384,0,0,0-.3-.128c-.234.011-.533.176-.533.426V10.7a.228.228,0,0,1-.192.218C8.766,12.065,5.619,17.656,4.506,23.461c-.043.229.266.442.41.261C7.642,20.287,10.96,18.045,16.205,18a.264.264,0,0,1,.224.256v3.461A.457.457,0,0,0,17.2,22l7.567-7.152a.588.588,0,0,0,.186-.447A.714.714,0,0,0,24.774,13.907Z'
-              transform='translate(-3.496 -5.749)'
-              fill='none'
-              stroke='#000'
-              strokeWidth='1'
-            />
-          </svg>
-        </div>
+        <Share />
       </div>
       <div
         className='home__realisation__modal__topbar__right'
