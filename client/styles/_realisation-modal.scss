@@ -164,27 +164,34 @@
     .home__realisation__modal__content {
       padding: 0;
       display: block;
-      height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
       margin-top: 0;
 
       .home__realisation__modal__content__image {
         display: block;
         width: 100%;
+        max-width: 100%;
 
-        div img {
+        .home__realisation__modal__content__image__container {
           width: 100%;
-          max-height: none;
+
+          img {
+            width: 100%;
+            max-height: none;
+          }
         }
 
-        svg {
+        .home__realisation__modal__next,
+        .home__realisation__modal__previous {
           display: none;
         }
       }
 
       .home__realisation__modal__content__text {
+        display: block;
         margin: 0;
         padding: var(--paddingY) var(--paddingX);
+        height: auto;
 
         h4 {
           padding-bottom: 1rem;
