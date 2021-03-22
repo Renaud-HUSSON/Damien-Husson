@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { MouseEventHandler, useState } from 'react'
+import { MouseEvent, MouseEventHandler, useState } from 'react'
 import { toast } from 'react-toastify'
 
 export const Share = () => {
@@ -11,7 +11,10 @@ export const Share = () => {
     setShareOpened(true)
   }
 
-  const closeModal: MouseEventHandler<HTMLDivElement> = (e) => {
+  const closeModal: MouseEventHandler<HTMLDivElement> &
+    MouseEventHandler<SVGSVGElement> = (
+    e: MouseEvent<HTMLDivElement & SVGSVGElement>
+  ) => {
     e.stopPropagation()
     setShareOpened(false)
   }
@@ -70,6 +73,7 @@ export const Share = () => {
               height='26.226'
               viewBox='0 0 26.233 26.226'
               className='share__modal__close'
+              onClick={closeModal}
             >
               <path
                 id='Icon_ionic-ios-close'
