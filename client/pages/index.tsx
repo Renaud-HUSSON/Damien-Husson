@@ -9,6 +9,7 @@ import { Presentation } from '../components/Home/Presentation'
 import { Realisations } from '../components/Home/Realisations'
 import { Socials } from '../components/Home/Socials'
 import { RealisationModal } from '../components/Home/RealisationModal'
+import { NextSeo } from 'next-seo'
 
 interface HomeProps {
   competences: Competence[]
@@ -44,6 +45,45 @@ export default function Home({
 
   return (
     <div className='home'>
+      <NextSeo
+        title='Damien HUSSON - Portfolio'
+        description='Bonjour, je suis un étudiant passionné par le graphisme.
+Bienvenue sur mon portfolio !'
+        openGraph={{
+          title: 'Damien HUSSON - Portfolio',
+          description:
+            'Bonjour, je suis un étudiant passionné par le graphisme. Bienvenue sur mon portfolio !',
+          type: 'website',
+          images: [
+            {
+              url: 'https://damienhusson.fr/assets/ogbanner.big.jpg',
+              width: 1920,
+              height: 1080,
+              alt: 'Site de Damien HUSSON',
+            },
+            {
+              url: 'https://damienhusson.fr/assets/ogbanner.jpg',
+              width: 720,
+              height: 405,
+              alt: 'Site de Damien HUSSON',
+            },
+            {
+              url: 'https://damienhusson.fr/assets/ogbanner.min.jpg',
+              width: 300,
+              height: 169,
+              alt: 'Site de Damien HUSSON',
+            },
+          ],
+          profile: {
+            firstName: 'Damien',
+            lastName: 'HUSSON',
+          },
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+          handle: '@damien_hsn',
+        }}
+      />
       <img src='/assets/banner.png' alt='Banner' />
       <Header />
       <aside className='socials'>
