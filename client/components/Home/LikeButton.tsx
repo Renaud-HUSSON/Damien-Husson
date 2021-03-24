@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  MouseEventHandler,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react'
 import { Realisation } from '../..'
 
 interface LikeButtonInterface {
@@ -19,7 +25,8 @@ export const LikeButton = ({
     )
   }, [])
 
-  const handleClick = () => {
+  const handleClick: MouseEventHandler<SVGSVGElement> = (e) => {
+    e.stopPropagation()
     const likeOrUnlike = liked ? 'unlike' : 'like'
 
     fetch(`/api/realisations/${likeOrUnlike}`, {

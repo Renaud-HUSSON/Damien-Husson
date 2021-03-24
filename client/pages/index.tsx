@@ -98,6 +98,7 @@ Bienvenue sur mon portfolio !'
         setDisplayedRealisations={setDisplayedRealisations}
         displayedRealisations={displayedRealisations}
         setShowRealisation={setShowRealisation}
+        setRealisations={setRealisations}
       />
       <RealisationModal
         displayedRealisations={displayedRealisations}

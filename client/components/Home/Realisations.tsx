@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Dispatch, MouseEventHandler, SetStateAction } from 'react'
 import { Categorie, Realisation, ShowRealisation } from '../..'
 import { FilterRealisations } from './FilterRealisations'
+import { LikeButton } from './LikeButton'
+import { Share } from './Share'
 
 interface RealisationsProps {
   realisations: Realisation[]
@@ -9,6 +11,7 @@ interface RealisationsProps {
   displayedRealisations: Realisation[]
   setDisplayedRealisations: Dispatch<SetStateAction<Realisation[]>>
   setShowRealisation: Dispatch<SetStateAction<ShowRealisation>>
+  setRealisations: Dispatch<SetStateAction<Realisation[]>>
 }
 
 export const Realisations = ({
@@ -17,13 +20,14 @@ export const Realisations = ({
   displayedRealisations,
   setDisplayedRealisations,
   setShowRealisation,
+  setRealisations,
 }: RealisationsProps) => {
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const element = e.target
 
-    if (!(element instanceof HTMLDivElement)) {
-      return
-    }
+    if (!(element instanceof HTMLDivElement)) return
+
+    if (!element.dataset.animation) return
 
     const x = (element.offsetLeft + element.offsetWidth / 2 - e.pageX) / 15
     const y = (element.offsetTop + element.offsetHeight / 2 - e.pageY) / 15
@@ -34,9 +38,7 @@ export const Realisations = ({
   const handleMouseLeave: MouseEventHandler<HTMLDivElement> = (e) => {
     const element = e.target
 
-    if (!(element instanceof HTMLDivElement)) {
-      return
-    }
+    if (!(element instanceof HTMLDivElement)) return
 
     element.style.transition = '0.3s'
     element.style.transform = 'rotateY(0deg) rotateX(0deg)'
@@ -45,9 +47,7 @@ export const Realisations = ({
   const handleMouseEnter: MouseEventHandler<HTMLDivElement> = (e) => {
     const element = e.target
 
-    if (!(element instanceof HTMLDivElement)) {
-      return
-    }
+    if (!(element instanceof HTMLDivElement)) return
 
     element.style.transition = '0s'
   }
@@ -84,10 +84,16 @@ export const Realisations = ({
                 className='home__realisations__grid__item'
                 key={realisation.id}
                 data-id={realisation.id}
+                data-animation
                 onClick={handleClick}
               >
                 <div>
                   <h3>{realisation.titre}</h3>
+                  <LikeButton
+                    setRealisations={setRealisations}
+                    realisation={realisation}
+                  />
+                  <Share realisationId={realisation.id} color='#fff' />
                 </div>
                 <img src={realisation.image} alt={realisation.titre} />
               </div>
