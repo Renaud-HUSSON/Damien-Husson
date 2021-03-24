@@ -150,7 +150,7 @@ export const TopBar = ({
           realisation={realisation}
           setRealisations={setRealisations}
         />
-        <Share />
+        <Share realisationId={realisation.id} />
       </div>
       <div
         className='home__realisation__modal__topbar__right'
