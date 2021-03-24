@@ -4,3 +4,5 @@ dist
 TODO.txt
 .env
 .next
+docker-compose.prod.yml
+init-letsencrypt.sh
