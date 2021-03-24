@@ -10,9 +10,14 @@ export const LikeButton = ({
   realisation,
   setRealisations,
 }: LikeButtonInterface) => {
-  const [liked, setLiked] = useState(
-    localStorage.getItem(`realisation-like-${realisation.id}`) === 'true'
-  )
+  const [liked, setLiked] = useState(false)
+
+  useEffect(() => {
+    setLiked(
+      window.localStorage.getItem(`realisation-like-${realisation.id}`) ===
+        'true'
+    )
+  }, [])
 
   const handleClick = () => {
     const likeOrUnlike = liked ? 'unlike' : 'like'
