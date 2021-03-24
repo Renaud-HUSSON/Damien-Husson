@@ -1,49 +1,52 @@
-.share {
-  .share__modal {
+.share__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  * {
+    pointer-events: all;
+  }
+
+  .share__modal__content {
+    max-width: 95vw;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    background: white;
+    box-shadow: 3px 6px 50px black;
+    padding: 4rem;
+    animation: 0.5s fadein forwards;
+    transition: 0.3s;
+    display: flex;
+    gap: 0.5rem;
 
-    .share__modal__content {
-      max-width: 95vw;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      background: white;
-      box-shadow: 3px 6px 50px black;
-      padding: 4rem;
-      animation: 0.5s fadein forwards;
-      transition: 0.3s;
+    .share__modal__content__copylink {
       display: flex;
-      gap: 0.5rem;
+      align-items: center;
+      flex: 1;
+    }
 
-      .share__modal__content__copylink {
-        display: flex;
-        align-items: center;
-        flex: 1;
-      }
+    input {
+      padding: 0.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
-      input {
-        padding: 0.5rem;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-
-      .share__modal__close {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        padding: 0.375rem;
-      }
+    .share__modal__close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      padding: 0.375rem;
     }
   }
 }
 
 @media (max-width: 768px) {
-  .share .share__modal .share__modal__content {
+  body .share__modal .share__modal__content {
     padding: 3rem 1.5rem;
   }
 }
