@@ -153,9 +153,6 @@ export const RealisationModal = ({
               <pre>
                 <p>{realisation.description}</p>
               </pre>
-              <a download href={realisation.image}>
-                Télécharger
-              </a>
             </div>
           </div>
         </>
