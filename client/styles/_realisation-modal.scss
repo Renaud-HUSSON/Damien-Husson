@@ -56,19 +56,18 @@
   .home__realisation__modal__content {
     display: flex;
     align-items: center;
-    gap: 10vw;
+    justify-content: space-around;
     padding: 0 var(--paddingX);
     height: 75vh;
     overflow-y: hidden;
     margin-top: 5vh;
 
     .home__realisation__modal__content__image {
-      width: 65%;
-      max-width: 65%;
+      max-width: 60%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 7.5vw;
+      gap: 5vw;
       flex-grow: 1;
       flex-shrink: 0;
 
@@ -90,6 +89,7 @@
     }
 
     .home__realisation__modal__content__text {
+      width: 30%;
       height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
