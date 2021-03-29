@@ -54,6 +54,7 @@
     justify-content: center;
     padding-bottom: 8rem;
     position: relative;
+    padding: 0 var(--bodyPadding);
 
     .home__banner__line {
       width: 5rem;
@@ -111,6 +112,7 @@
 
   .home__presentation {
     overflow: hidden;
+    margin: 0 var(--bodyPadding);
 
     > div {
       transform: translateX(100%);
@@ -159,6 +161,7 @@
   .home__competences {
     overflow: hidden;
     position: relative;
+    margin: 0 var(--bodyPadding);
 
     > div {
       transform: translateX(100%);
@@ -208,6 +211,8 @@
   // ~~~~~~~~~~~~~~~~~~~~~~~ END COMPETENCES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   .home__realisations {
+    padding: 0 var(--bodyPadding);
+
     h2::before {
       content: 'PORTFOLIO';
     }
@@ -346,7 +351,6 @@
   }
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~ END SOCIALS ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   footer {
-    margin: 0 calc(-1 * var(--bodyPadding));
     background-image: url('../public//assets/contact.svg');
     background-repeat: no-repeat;
     background-position: top;
