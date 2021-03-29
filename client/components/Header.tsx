@@ -6,6 +6,12 @@ export const Header = () => {
 
   const handleClick = () => {
     setNavOpened((nav) => !nav)
+
+    if (navOpened) {
+      document.body.removeAttribute('disable-scroll')
+    } else {
+      document.body.setAttribute('disable-scroll', 'true')
+    }
   }
 
   return (
