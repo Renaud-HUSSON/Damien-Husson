@@ -54,7 +54,7 @@
     justify-content: center;
     padding-bottom: 8rem;
     position: relative;
-    padding: 0 var(--bodyPadding);
+    margin: 0 var(--bodyPadding);
 
     .home__banner__line {
       width: 5rem;
@@ -68,13 +68,36 @@
 
     h1 {
       margin-top: 5rem;
-      font-family: 'Playfair Display';
       font-size: 10rem;
-      line-height: 9rem;
-      background-image: linear-gradient(to bottom, var(--orange), var(--pink));
+      background-image: linear-gradient(
+        to bottom,
+        var(--orange),
+        #f97435,
+        #f1543b,
+        #eb3b44,
+        #f1385a,
+        #f8396a,
+        var(--pink)
+      );
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      line-height: 7.75rem;
+      width: fit-content;
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          overflow: visible;
+          font-family: 'Playfair Display';
+        }
+
+        &:last-child {
+          padding-bottom: 0.05em;
+        }
+      }
     }
 
     .home__banner_scroll {

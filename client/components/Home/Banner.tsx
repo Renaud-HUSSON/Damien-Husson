@@ -9,7 +9,22 @@ export const Banner = () => {
         Bienvenue sur mon portfolio !
       </p>
       <h1>
-        Damien <br /> Husson
+        <div>
+          <span>D</span>
+          <span>a</span>
+          <span>m</span>
+          <span>i</span>
+          <span>e</span>
+          <span>n</span>
+        </div>
+        <div>
+          <span>H</span>
+          <span>u</span>
+          <span>s</span>
+          <span>s</span>
+          <span>o</span>
+          <span>n</span>
+        </div>
       </h1>
       <div className='home__banner_scroll'>
         <div></div>
