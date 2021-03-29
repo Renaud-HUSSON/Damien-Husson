@@ -514,9 +514,19 @@ body[modalOpened='true']
       }
     }
 
-    .home__competences.home__competences__visible,
-    .home__presentation.home__presentation__visible {
-      animation: none;
+    .home__competences > div,
+    .home__presentation > div {
+      transform: translate(0);
+      opacity: 1;
+
+      &.home__competences__visible,
+      &.home__presentation__visible {
+        animation: none;
+      }
+
+      &::after {
+        display: none;
+      }
     }
 
     .home__realisations > .home__realisations__grid {
