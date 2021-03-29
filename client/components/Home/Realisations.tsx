@@ -92,6 +92,7 @@ export const Realisations = ({
                   <LikeButton
                     setRealisations={setRealisations}
                     realisation={realisation}
+                    color='#fff'
                   />
                   <Share realisationId={realisation.id} color='#fff' />
                 </div>
