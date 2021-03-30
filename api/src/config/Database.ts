@@ -23,12 +23,14 @@ const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
 })
 
 const initUsers = async () => {
-  for (let i = 0; i < USERS?.length ?? 0; i++) {
-    db.utilisateurs.create({
-      email: USERS[i],
-      password: await bcrypt.hash(USERS_PASSWORDS[i], 10),
-    })
-  }
+  try {
+    for (let i = 0; i < USERS?.length ?? 0; i++) {
+      db.utilisateurs.create({
+        email: USERS[i],
+        password: await bcrypt.hash(USERS_PASSWORDS[i], 10),
+      })
+    }
+  } catch (_e) {}
 }
 
 const db: Database = {
