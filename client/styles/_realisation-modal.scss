@@ -89,13 +89,13 @@
     }
 
     .home__realisation__modal__content__text {
-      width: 30%;
-      height: 100%;
+      width: 40%;
+      max-height: 100%;
       overflow-x: hidden;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 0 10%;
+      margin: auto;
+      height: fit-content;
 
       > * {
         overflow-wrap: break-word;
