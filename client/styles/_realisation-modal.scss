@@ -47,9 +47,13 @@
         }
       }
     }
-    .home__realisation__modal__topbar__right
+    .home__realisation__modal__topbar__right {
+      display: flex;
+      align-items: center;
+
       .home__realisation__modal__topbar__exit {
-      transform: scale(0.8);
+        transform: scale(0.8);
+      }
     }
   }
 

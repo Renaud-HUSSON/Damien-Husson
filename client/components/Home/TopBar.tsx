@@ -157,17 +157,28 @@ export const TopBar = ({
         onClick={handleClose}
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='26.233'
-          height='26.226'
-          viewBox='0 0 26.233 26.226'
           className='home__realisation__modal__topbar__exit'
+          width='27'
+          height='26'
+          viewBox='0 0 27 26'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
         >
-          <path
-            id='Icon_ionic-ios-close'
-            data-name='Icon ionic-ios-close'
-            d='M27.51,24.4l9.369-9.369a2.2,2.2,0,0,0-3.1-3.1L24.405,21.3l-9.369-9.369a2.2,2.2,0,1,0-3.1,3.1L21.3,24.4l-9.369,9.369a2.2,2.2,0,0,0,3.1,3.1l9.369-9.369,9.369,9.369a2.2,2.2,0,0,0,3.1-3.1Z'
-            transform='translate(-11.285 -11.289)'
+          <line
+            x1='1.62605'
+            y1='0.812974'
+            x2='25.5766'
+            y2='24.7635'
+            stroke='black'
+            stroke-width='2'
+          />
+          <line
+            x1='25.7071'
+            y1='0.707107'
+            x2='1.75659'
+            y2='24.6576'
+            stroke='black'
+            stroke-width='2'
           />
         </svg>
       </div>
