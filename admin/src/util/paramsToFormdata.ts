@@ -8,11 +8,10 @@ export const paramsToFormData = (
   for (let item in params.data) {
     formData.append(
       item,
-      params.data[item].hasOwnProperty('rawFile')
+      params.data[item]?.hasOwnProperty('rawFile')
         ? params.data[item].rawFile
         : params.data[item]
     )
   }
-
   return formData
 }
