@@ -625,7 +625,7 @@ body[modalOpened='true']
     }
 
     .home__references > div .home__references__item,
-    .home__references .home__references__item.right {
+    .home__references > div .home__references__item.right {
       margin-bottom: 4rem;
       display: block;
 
