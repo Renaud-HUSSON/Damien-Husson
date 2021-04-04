@@ -11,6 +11,7 @@ import { Socials } from '../components/Home/Socials'
 import { RealisationModal } from '../components/Home/RealisationModal'
 import { NextSeo } from 'next-seo'
 import { References } from '../components/Home/References'
+import Particles from 'react-tsparticles'
 
 interface HomeProps {
   competences: Competence[]
@@ -86,6 +87,45 @@ Bienvenue sur mon portfolio !'
         }}
       />
       <img src='/assets/banner.png' alt='Banner' />
+      <Particles
+        style={{ position: 'absolute', top: '0', left: 0 }}
+        width='100vw'
+        height='100vh'
+        options={{
+          particles: {
+            number: {
+              value: 25,
+              density: {
+                enable: true,
+              },
+            },
+            fpsLimit: 60,
+            opacity: {
+              value: 1,
+              anim: {
+                minimumValue: 1,
+              },
+            },
+            size: {
+              value: 7,
+              random: true,
+            },
+            line_linked: {
+              enable: false,
+            },
+            move: {
+              enable: true,
+              outMode: 'out',
+              random: true,
+              speed: 0.5,
+              straight: false,
+            },
+            color: {
+              value: ['#FF3E7A', '#FF8831', '#53O09A', '#68A4E8'],
+            },
+          },
+        }}
+      />
       <Header />
       <aside className='socials'>
         <Socials />
