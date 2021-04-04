@@ -279,6 +279,10 @@
         &.home__references__item__orange {
           --referenceColor: #ff8831;
         }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
