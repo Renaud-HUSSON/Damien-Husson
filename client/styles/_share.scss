@@ -19,7 +19,7 @@
     background: white;
     box-shadow: 3px 6px 50px black;
     padding: 4rem;
-    animation: 0.5s fadein forwards;
+    animation: 0.5s fadeinShare forwards;
     transition: 0.3s;
     display: flex;
     gap: 0.5rem;
@@ -48,17 +48,5 @@
 @media (max-width: 768px) {
   body .share__modal .share__modal__content {
     padding: 3rem 1.5rem;
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + 50px));
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
   }
 }
