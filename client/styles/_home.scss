@@ -63,6 +63,23 @@
       .home__banner__line_color {
         height: 3px;
         background-color: #eb3c42;
+        transform-origin: left;
+        animation: scaleX 0.5s forwards;
+      }
+    }
+
+    p {
+      overflow: hidden;
+
+      span {
+        display: inline-block;
+        animation: fadeInFromTop 0.8s forwards;
+        animation-delay: 0.1s;
+        transform: translateY(-500%);
+
+        &:last-child {
+          animation-delay: 0.4s;
+        }
       }
     }
 
@@ -84,6 +101,9 @@
       color: transparent;
       line-height: 7.75rem;
       width: fit-content;
+      animation: fadeIn 1.5s forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
 
       > div {
         display: flex;
@@ -740,88 +760,5 @@ body[modalOpened='true']
         }
       }
     }
-  }
-}
-
-@keyframes scroll-animation {
-  0% {
-    top: 12px;
-    opacity: 1;
-    width: 4px;
-    height: 4px;
-  }
-
-  20% {
-    top: 12px;
-    opacity: 1;
-    transform: translate(-50%, -4px);
-  }
-
-  100% {
-    top: 12px;
-    opacity: 0;
-    width: 2px;
-    height: 2px;
-    transform: translate(-50%, 15px);
-  }
-}
-
-@keyframes appear-from-left {
-  0% {
-    transform: translateX(-100%);
-    position: relative;
-  }
-
-  50% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes appear-from-left_after {
-  0% {
-    transform: translateX(0%);
-    visibility: visible;
-  }
-
-  50% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(101%);
-  }
-}
-
-@keyframes appear-from-right {
-  0% {
-    transform: translateX(100%);
-    position: relative;
-  }
-
-  50% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes appear-from-right_after {
-  0% {
-    transform: translateX(0%);
-    visibility: visible;
-  }
-
-  55% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-101%);
   }
 }
