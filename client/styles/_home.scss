@@ -207,71 +207,78 @@
     h2::before {
       content: 'REFERENCES';
     }
+    > div {
+      padding: var(--sectionSeparator);
 
-    .home__references__item {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 7rem;
-      position: relative;
+      .home__references__item {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 7rem;
+        position: relative;
 
-      .home__references__item__text {
-        width: 55%;
-        height: fit-content;
+        .home__references__item__text {
+          width: 55%;
+          height: fit-content;
 
-        h3 span,
-        p span {
-          color: var(--referenceColor);
+          h3 span,
+          p span {
+            color: var(--referenceColor);
+          }
+
+          h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            padding-bottom: 2rem;
+          }
+
+          p {
+            font-size: 1.3rem;
+
+            span {
+              font-weight: 500;
+            }
+          }
         }
-
-        h3 {
-          font-size: 1.6rem;
-          font-weight: 500;
-          padding-bottom: 2rem;
-        }
-
-        p {
-          font-size: 1.3rem;
-        }
-      }
-
-      .home__reference__item__image {
-        left: 0;
-        position: absolute;
-        width: 40%;
-        height: 100%;
-
-        img {
-          max-width: 100%;
-          height: 100%;
-          object-fit: scale-down;
-        }
-      }
-
-      &.right {
-        justify-content: flex-start;
 
         .home__reference__item__image {
-          left: auto;
-          right: 0;
-          display: flex;
-          justify-content: flex-end;
+          left: 0;
+          position: absolute;
+          width: 40%;
+          height: 100%;
+
+          img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+          }
         }
-      }
 
-      &.home__references__item__blue {
-        --referenceColor: #68a4e8;
-      }
+        &.right {
+          justify-content: flex-start;
 
-      &.home__references__item__pink {
-        --referenceColor: #ff3e7a;
-      }
+          .home__reference__item__image {
+            left: auto;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
 
-      &.home__references__item__purple {
-        --referenceColor: #53009a;
-      }
+        &.home__references__item__blue {
+          --referenceColor: #68a4e8;
+        }
 
-      &.home__references__item__orange {
-        --referenceColor: #ff8831;
+        &.home__references__item__pink {
+          --referenceColor: #ff3e7a;
+        }
+
+        &.home__references__item__purple {
+          --referenceColor: #53009a;
+        }
+
+        &.home__references__item__orange {
+          --referenceColor: #ff8831;
+        }
       }
     }
   }
@@ -609,7 +616,7 @@ body[modalOpened='true']
       }
     }
 
-    .home__references .home__references__item,
+    .home__references > div .home__references__item,
     .home__references .home__references__item.right {
       margin-bottom: 4rem;
       display: block;
