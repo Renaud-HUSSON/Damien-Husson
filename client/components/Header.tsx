@@ -1,7 +1,9 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export const Header = () => {
+  const router = useRouter()
   const [navOpened, setNavOpened] = useState(false)
 
   const handleClick = () => {
@@ -13,6 +15,11 @@ export const Header = () => {
       document.body.setAttribute('disable-scroll', 'true')
     }
   }
+
+  useEffect(() => {
+    document.body.removeAttribute('disable-scroll')
+    setNavOpened(false)
+  }, [router])
 
   return (
     <header>
