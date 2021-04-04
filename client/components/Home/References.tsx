@@ -77,7 +77,7 @@ export const References = () => {
                 sitcoms, ce sont des séries humoristiques avec la plupart du
                 temps des décors récurrents et des rires en fond. <br />{' '}
                 <span>Friends, The Big Bang Theory</span> et{' '}
-                <span>How I Met Your Mother</span>
+                <span>How I Met Your Mother </span>
                 sont de loin mes 3 séries préférées, ce sont toutes les trois
                 des sitcoms. Elles parlent chacune d'entre elles d'un groupe
                 d'amis où l'on suit leurs histoires, les personnages sont tous
