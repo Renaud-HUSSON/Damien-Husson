@@ -88,7 +88,7 @@ Bienvenue sur mon portfolio !'
       />
       <img src='/assets/banner.png' alt='Banner' />
       <Particles
-        style={{ position: 'absolute', top: '0', left: 0 }}
+        style={{ position: 'absolute', top: '0', left: '0', zIndex: '-1' }}
         width='100vw'
         options={{
           particles: {
