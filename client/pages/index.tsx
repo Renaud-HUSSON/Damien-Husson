@@ -90,11 +90,10 @@ Bienvenue sur mon portfolio !'
       <Particles
         style={{ position: 'absolute', top: '0', left: 0 }}
         width='100vw'
-        height='100vh'
         options={{
           particles: {
             number: {
-              value: 25,
+              value: 13,
               density: {
                 enable: true,
               },
@@ -107,7 +106,7 @@ Bienvenue sur mon portfolio !'
               },
             },
             size: {
-              value: 7,
+              value: 5,
               random: true,
             },
             line_linked: {
