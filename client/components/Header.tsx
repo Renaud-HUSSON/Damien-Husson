@@ -34,6 +34,11 @@ export const Header = () => {
             <li>PRÉSENTATION</li>
           </a>
         </Link>
+        <Link href='#references'>
+          <a>
+            <li>RÉFÉRENCES</li>
+          </a>
+        </Link>
         <Link href='#competences'>
           <a>
             <li>COMPÉTENCES</li>

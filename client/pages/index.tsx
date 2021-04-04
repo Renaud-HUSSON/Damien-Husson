@@ -10,6 +10,7 @@ import { Realisations } from '../components/Home/Realisations'
 import { Socials } from '../components/Home/Socials'
 import { RealisationModal } from '../components/Home/RealisationModal'
 import { NextSeo } from 'next-seo'
+import { References } from '../components/Home/References'
 
 interface HomeProps {
   competences: Competence[]
@@ -91,6 +92,7 @@ Bienvenue sur mon portfolio !'
       </aside>
       <Banner />
       <Presentation />
+      <References />
       <Competences competences={competences} />
       <Realisations
         realisations={realisations}

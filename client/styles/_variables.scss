@@ -8,6 +8,12 @@
   --bodyPadding: 15vw;
 }
 
+@media (max-width: 1440px) {
+  :root {
+    --bodyPadding: 12vw;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --bodyPadding: 5vw;
