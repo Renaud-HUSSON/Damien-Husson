@@ -1,34 +1,23 @@
 @keyframes scroll-animation {
   0% {
-    top: 12px;
     opacity: 1;
-    width: 4px;
-    height: 4px;
+    transform: translateX(-50%) scale(1);
   }
 
   20% {
-    top: 12px;
     opacity: 1;
-    transform: translate(-50%, -4px);
+    transform: translate(-50%, -4px) scale(1);
   }
 
   100% {
-    top: 12px;
     opacity: 0;
-    width: 2px;
-    height: 2px;
-    transform: translate(-50%, 15px);
+    transform: translate(-50%, 15px) scale(0.5);
   }
 }
 
 @keyframes appear-from-left {
   0% {
     transform: translateX(-100%);
-    position: relative;
-  }
-
-  50% {
-    transform: translateX(0%);
   }
 
   100% {
@@ -38,11 +27,6 @@
 
 @keyframes appear-from-left_after {
   0% {
-    transform: translateX(0%);
-    visibility: visible;
-  }
-
-  50% {
     transform: translateX(0%);
   }
 
@@ -54,11 +38,6 @@
 @keyframes appear-from-right {
   0% {
     transform: translateX(100%);
-    position: relative;
-  }
-
-  50% {
-    transform: translateX(0%);
   }
 
   100% {
@@ -68,11 +47,6 @@
 
 @keyframes appear-from-right_after {
   0% {
-    transform: translateX(0%);
-    visibility: visible;
-  }
-
-  55% {
     transform: translateX(0%);
   }
 
