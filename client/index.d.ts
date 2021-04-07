@@ -30,3 +30,11 @@ export interface ShowRealisation {
   active: boolean
   realisationId: number | undefined
 }
+
+export interface SectionsRefs {
+  presentation: LegacyRef<HTMLDivElement>
+  references: LegacyRef<HTMLDivElement>
+  competences: LegacyRef<HTMLDivElement>
+  realisations: LegacyRef<HTMLDivElement>
+  contact: LegacyRef<HTMLElement>
+}

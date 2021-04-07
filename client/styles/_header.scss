@@ -19,7 +19,7 @@
       box-shadow: 11px 10px 44px 0px rgba(0, 0, 0, 0.1);
       z-index: 20;
 
-      ul a {
+      ul li {
         color: black;
       }
 
@@ -28,12 +28,8 @@
       }
     }
 
-    > a {
+    img {
       height: 60%;
-
-      img {
-        height: 100%;
-      }
     }
 
     ul {
@@ -42,31 +38,27 @@
       gap: 1rem;
       padding: 0;
 
-      a {
+      li {
         color: white;
-        text-decoration: none;
         font-size: 15px;
+        position: relative;
+        overflow: hidden;
 
-        li {
-          position: relative;
-          overflow: hidden;
+        &::after {
+          display: block;
+          content: '';
+          background-image: linear-gradient(to right, #ff8831, #ff3e7a);
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          top: 50%;
+          left: -100%;
+          transform: translateY(-50%);
+        }
 
-          &::after {
-            display: block;
-            content: '';
-            background-image: linear-gradient(to right, #ff8831, #ff3e7a);
-            width: 100%;
-            height: 2px;
-            position: absolute;
-            top: 50%;
-            left: -100%;
-            transform: translateY(-50%);
-          }
-
-          &:hover::after {
-            transform: translate(200%, -50%);
-            transition: 0.8s;
-          }
+        &:hover::after {
+          transform: translate(200%, -50%);
+          transition: 0.8s;
         }
       }
     }
@@ -106,7 +98,7 @@
         transition: 0.4s ease-in-out;
         background-image: linear-gradient(to bottom, #ff8831, #ff3e7a);
 
-        a li {
+        li {
           text-align: center;
 
           &::after {

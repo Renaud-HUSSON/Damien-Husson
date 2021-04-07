@@ -1,6 +1,11 @@
+import { LegacyRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-export const Presentation = () => {
+interface PresentationProps {
+  presentationRef: LegacyRef<HTMLDivElement>
+}
+
+export const Presentation = ({ presentationRef }: PresentationProps) => {
   const options = {
     triggerOnce: true,
     threshold: 0,
@@ -10,7 +15,7 @@ export const Presentation = () => {
 
   return (
     <>
-      <div id='presentation'></div>
+      <div id='presentation' ref={presentationRef}></div>
       <section className='home__presentation'>
         <div ref={ref} className={`${inView && 'home__presentation__visible'}`}>
           <h2>Présentation</h2>

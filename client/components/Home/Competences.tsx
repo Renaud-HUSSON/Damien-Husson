@@ -1,11 +1,16 @@
+import { LegacyRef, RefObject } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Competence } from '../..'
 
 interface CompetencesProps {
   competences: Competence[]
+  competencesRef: LegacyRef<HTMLDivElement>
 }
 
-export const Competences = ({ competences }: CompetencesProps) => {
+export const Competences = ({
+  competences,
+  competencesRef,
+}: CompetencesProps) => {
   const options = {
     triggerOnce: true,
     threshold: 0.4,
@@ -15,7 +20,7 @@ export const Competences = ({ competences }: CompetencesProps) => {
 
   return (
     <>
-      <div id='competences'></div>
+      <div id='competences' ref={competencesRef}></div>
       <section className='home__competences' ref={ref}>
         <div ref={ref} className={`${inView && 'home__competences__visible'}`}>
           <h2>Mes Compétences</h2>

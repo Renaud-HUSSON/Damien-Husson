@@ -1,6 +1,12 @@
 import { GetStaticProps } from 'next'
-import { useEffect, useState } from 'react'
-import { Categorie, Competence, Realisation, ShowRealisation } from '..'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  Categorie,
+  Competence,
+  Realisation,
+  SectionsRefs,
+  ShowRealisation,
+} from '..'
 import { Header } from '../components/Header'
 import { Banner } from '../components/Home/Banner'
 import { Competences } from '../components/Home/Competences'
@@ -39,6 +45,14 @@ export default function Home({
     active: false,
     realisationId: undefined,
   })
+
+  const sectionsRefs: SectionsRefs = {
+    presentation: useRef<HTMLDivElement>(null),
+    references: useRef<HTMLDivElement>(null),
+    competences: useRef<HTMLDivElement>(null),
+    realisations: useRef<HTMLDivElement>(null),
+    contact: useRef<HTMLElement>(null),
+  }
 
   useEffect(() => {
     if (showRealisation.active) {
@@ -130,15 +144,19 @@ Bienvenue sur mon portfolio !'
           }}
         />
       )}
-      <Header />
+      <Header sectionsRefs={sectionsRefs} />
       {/* <aside className='socials'>
         <Socials />
       </aside> */}
       <Banner />
-      <Presentation />
-      <References />
-      <Competences competences={competences} />
+      <Presentation presentationRef={sectionsRefs.presentation} />
+      <References referencesRef={sectionsRefs.references} />
+      <Competences
+        competencesRef={sectionsRefs.competences}
+        competences={competences}
+      />
       <Realisations
+        realisationsRef={sectionsRefs.realisations}
         realisations={realisations}
         categories={categories}
         setDisplayedRealisations={setDisplayedRealisations}
@@ -152,7 +170,7 @@ Bienvenue sur mon portfolio !'
         setShowRealisation={setShowRealisation}
         setRealisations={setRealisations}
       />
-      <Contact />
+      <Contact contactRef={sectionsRefs.contact} />
     </div>
   )
 }

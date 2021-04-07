@@ -1,6 +1,11 @@
+import { LegacyRef } from 'react'
 import { IntersectionOptions, useInView } from 'react-intersection-observer'
 
-export const References = () => {
+interface ReferencesProps {
+  referencesRef: LegacyRef<HTMLDivElement>
+}
+
+export const References = ({ referencesRef }: ReferencesProps) => {
   const options: IntersectionOptions = {
     threshold: 0.4,
     triggerOnce: true,
@@ -13,7 +18,7 @@ export const References = () => {
 
   return (
     <>
-      <div id='references'></div>
+      <div id='references' ref={referencesRef}></div>
       <section className='home__references'>
         <h2>Mon Univers</h2>
         <div>

@@ -1,9 +1,21 @@
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { MouseEventHandler, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useInView } from 'react-intersection-observer'
+import { SectionsRefs } from '..'
 
-export const Header = () => {
+interface HeaderProps {
+  sectionsRefs: SectionsRefs
+}
+
+type sections =
+  | 'presentation'
+  | 'references'
+  | 'competences'
+  | 'realisations'
+  | 'contact'
+
+export const Header = ({ sectionsRefs }: HeaderProps) => {
   const router = useRouter()
   const [navOpened, setNavOpened] = useState(false)
 
@@ -28,40 +40,39 @@ export const Header = () => {
     setNavOpened(false)
   }, [router])
 
+  const handleImgClick = () => {
+    window.scrollTo({ top: 0 })
+  }
+
+  const handleSectionScrollTo: MouseEventHandler<HTMLLIElement> = (e) => {
+    if (!(e.target instanceof HTMLLIElement)) return
+
+    // @ts-ignore: Unreachable code error
+    const section: sections = e.target.dataset.section!
+
+    sectionsRefs[section].current.scrollIntoView()
+  }
+
   return (
     <div className='header__wrapper' ref={ref}>
       <header className={!inView ? 'header--sticky' : ''}>
-        <Link href='/'>
-          <a>
-            <img src='/assets/logo.png' alt='Logo' />
-          </a>
-        </Link>
+        <img onClick={handleImgClick} src='/assets/logo.png' alt='Logo' />
         <ul className={navOpened ? 'opened' : ''}>
-          <Link href='#presentation'>
-            <a>
-              <li>PRÉSENTATION</li>
-            </a>
-          </Link>
-          <Link href='#references'>
-            <a>
-              <li>RÉFÉRENCES</li>
-            </a>
-          </Link>
-          <Link href='#competences'>
-            <a>
-              <li>COMPÉTENCES</li>
-            </a>
-          </Link>
-          <Link href='#realisations'>
-            <a>
-              <li>RÉALISATIONS</li>
-            </a>
-          </Link>
-          <Link href='#contact'>
-            <a>
-              <li>CONTACT</li>
-            </a>
-          </Link>
+          <li data-section='presentation' onClick={handleSectionScrollTo}>
+            PRÉSENTATION
+          </li>
+          <li data-section='references' onClick={handleSectionScrollTo}>
+            RÉFÉRENCES
+          </li>
+          <li data-section='competences' onClick={handleSectionScrollTo}>
+            COMPÉTENCES
+          </li>
+          <li data-section='realisations' onClick={handleSectionScrollTo}>
+            RÉALISATIONS
+          </li>
+          <li data-section='contact' onClick={handleSectionScrollTo}>
+            CONTACT
+          </li>
         </ul>
         <div className={navOpened ? 'opened' : ''} onClick={handleClick}>
           <div></div>

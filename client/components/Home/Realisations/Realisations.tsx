@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, LegacyRef, SetStateAction } from 'react'
 import { Categorie, Realisation, ShowRealisation } from '../../..'
 import { FilterRealisations } from '../FilterRealisations'
 import { RealisationsItem } from './RealisationItem'
@@ -10,9 +10,11 @@ interface RealisationsProps {
   setDisplayedRealisations: Dispatch<SetStateAction<Realisation[]>>
   setShowRealisation: Dispatch<SetStateAction<ShowRealisation>>
   setRealisations: Dispatch<SetStateAction<Realisation[]>>
+  realisationsRef: LegacyRef<HTMLDivElement>
 }
 
 export const Realisations = ({
+  realisationsRef,
   realisations,
   categories,
   displayedRealisations,
@@ -22,7 +24,7 @@ export const Realisations = ({
 }: RealisationsProps) => {
   return (
     <>
-      <div id='realisations'></div>
+      <div id='realisations' ref={realisationsRef}></div>
       <section className='home__realisations'>
         <h2>Mes Réalisations</h2>
         <FilterRealisations

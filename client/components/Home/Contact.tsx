@@ -2,10 +2,9 @@ import {
   ChangeEvent,
   ChangeEventHandler,
   FormEvent,
-  InputHTMLAttributes,
+  LegacyRef,
   useState,
 } from 'react'
-import { Socials } from './Socials'
 import { toast } from 'react-toastify'
 
 interface ContactData {
@@ -15,7 +14,11 @@ interface ContactData {
   message: string
 }
 
-export const Contact = () => {
+interface ContactProps {
+  contactRef: LegacyRef<HTMLElement>
+}
+
+export const Contact = ({ contactRef }: ContactProps) => {
   const [contactData, setContactData] = useState<ContactData>({
     prenom: '',
     nom: '',
@@ -57,7 +60,7 @@ export const Contact = () => {
   }
 
   return (
-    <footer>
+    <footer ref={contactRef}>
       <div className='home__contact'>
         <div id='contact'></div>
         <h2>Contactez-moi !</h2>
