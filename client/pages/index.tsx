@@ -177,7 +177,7 @@ Bienvenue sur mon portfolio !'
 
 export const getStaticProps: GetStaticProps = async () => {
   const realisations = await fetch(
-    `${process.env.API_URL}realisations`
+    `${process.env.API_URL}realisations?order[0][0]=id&order[0][1]=DESC`
   ).then((res) => res.json())
   const competences = await fetch(
     `${process.env.API_URL}competences`
