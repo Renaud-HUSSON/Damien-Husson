@@ -40,7 +40,8 @@ export const Realisations = ({
 
     if (!(element instanceof HTMLDivElement)) return
 
-    element.style.transition = '0.3s'
+    element.style.transitionDuration = '0.3s, 0.7s'
+    element.style.transitionProperty = 'transform, padding'
     element.style.transform = 'rotateY(0deg) rotateX(0deg)'
   }
 
@@ -49,7 +50,8 @@ export const Realisations = ({
 
     if (!(element instanceof HTMLDivElement)) return
 
-    element.style.transition = '0s'
+    element.style.transitionDuration = '0s, 0.7s'
+    element.style.transitionProperty = 'transform, padding'
   }
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -87,7 +89,7 @@ export const Realisations = ({
                 data-animation
                 onClick={handleClick}
               >
-                <div>
+                <div className='home__realisations__grid__item__hover'>
                   <h3>{realisation.titre}</h3>
                   <LikeButton
                     setRealisations={setRealisations}
@@ -96,7 +98,9 @@ export const Realisations = ({
                   />
                   <Share realisationId={realisation.id} color='#fff' />
                 </div>
-                <img src={realisation.image} alt={realisation.titre} />
+                <div className='home__realisations__grid__item__img'>
+                  <img src={realisation.image} alt={realisation.titre} />
+                </div>
               </div>
             )
           })}
