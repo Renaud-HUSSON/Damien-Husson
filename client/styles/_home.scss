@@ -158,7 +158,7 @@
     margin: 0 var(--bodyPadding);
 
     > div {
-      transform: translateX(100%);
+      opacity: 0;
       position: relative;
       will-change: transform;
 
@@ -194,6 +194,7 @@
 
       &.home__presentation__visible {
         animation: appear-from-left forwards 0.65s ease-in-out;
+        opacity: 1;
 
         &::after {
           animation: appear-from-left_after forwards 0.65s ease-in-out;
