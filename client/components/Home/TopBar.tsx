@@ -170,7 +170,7 @@ export const TopBar = ({
             x2='25.5766'
             y2='24.7635'
             stroke='black'
-            stroke-width='2'
+            strokeWidth='2'
           />
           <line
             x1='25.7071'
@@ -178,7 +178,7 @@ export const TopBar = ({
             x2='1.75659'
             y2='24.6576'
             stroke='black'
-            stroke-width='2'
+            strokeWidth='2'
           />
         </svg>
       </div>

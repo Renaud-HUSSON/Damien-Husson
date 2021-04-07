@@ -73,19 +73,27 @@ export const RealisationModal = ({
         active: false,
         realisationId: undefined,
       })
-      router.push(router.pathname)
+      router.push(router.pathname, undefined, {
+        scroll: false,
+      })
     }
   }, [router])
 
   useEffect(() => {
     if (showRealisation.active === true) {
       router.push(
-        `${router.pathname}?realisationId=${showRealisation.realisationId}`
+        `${router.pathname}?realisationId=${showRealisation.realisationId}`,
+        undefined,
+        {
+          scroll: false,
+        }
       )
       return
     }
 
-    router.push(router.pathname)
+    router.push(router.pathname, undefined, {
+      scroll: false,
+    })
   }, [showRealisation.realisationId])
 
   return (

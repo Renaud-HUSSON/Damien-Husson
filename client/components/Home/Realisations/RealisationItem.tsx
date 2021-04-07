@@ -14,6 +14,7 @@ export const RealisationsItem = ({
   setRealisations,
   realisation,
 }: RealisationProps) => {
+  const realisationRef = useRef<HTMLDivElement>(null)
 
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
     const element = e.target
@@ -48,6 +49,14 @@ export const RealisationsItem = ({
   }
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (realisationRef.current) {
+      realisationRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
+
+    const target = e.target
 
     if (!(target instanceof HTMLDivElement)) return
     if (!target.dataset.id) return
@@ -68,6 +77,7 @@ export const RealisationsItem = ({
       data-id={realisation.id}
       data-animation
       onClick={handleClick}
+      ref={realisationRef}
     >
       <div className='home__realisations__grid__item__hover'>
         <h3>{realisation.titre}</h3>
