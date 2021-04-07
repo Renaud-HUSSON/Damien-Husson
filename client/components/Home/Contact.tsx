@@ -100,9 +100,7 @@ export const Contact = () => {
               damien.husson@etud.univ-tln.fr
             </a>
             <p>06 78 91 55 78</p>
-            <div>
-              <Socials />
-            </div>
+            <div>{/* <Socials /> */}</div>
           </div>
         </div>
       </div>

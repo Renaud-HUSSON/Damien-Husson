@@ -131,9 +131,9 @@ Bienvenue sur mon portfolio !'
         />
       )}
       <Header />
-      <aside className='socials'>
+      {/* <aside className='socials'>
         <Socials />
-      </aside>
+      </aside> */}
       <Banner />
       <Presentation />
       <References />
