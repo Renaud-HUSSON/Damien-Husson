@@ -656,20 +656,18 @@ body[modalOpened='true']
 }
 
 @media (max-width: 1440px) {
-  .home {
-    > img {
+  .home > img {
       height: 75vh;
-    }
-
-    .home__realisations > .home__realisations__grid {
-      column-count: 2;
-    }
   }
 }
 
 @media (max-width: 1200px) {
   .home {
     --sectionSeparator: 3rem 0;
+
+    .home__realisations > .home__realisations__grid {
+	grid-template-colums: repeat(2, 1fr);
+    }
 
     > img {
       height: 50vh;
