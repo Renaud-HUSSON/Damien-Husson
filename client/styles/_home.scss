@@ -220,16 +220,45 @@
         margin-bottom: 7rem;
         position: relative;
 
+        &.home__references__item__visible {
+          .home__references__item__text {
+            h3 span {
+              animation: fadeInFromTop 0.6s forwards;
+              animation-delay: 0.3s;
+            }
+
+            p {
+              animation: fadeIn 1s forwards;
+              animation-delay: 0.45s;
+            }
+          }
+
+          .home__reference__item__image img,
+          &.right .home__reference__item__image img {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
         .home__references__item__text {
           width: 55%;
           height: fit-content;
 
-          h3 span,
+          h3 span span,
           p span {
             color: var(--referenceColor);
           }
 
           h3 {
+            overflow: hidden;
+
+            > span {
+              opacity: 0;
+              transform: translateY(-100%);
+              animation-delay: 0.8s;
+              display: inline-block;
+            }
+
             font-size: 1.6rem;
             font-weight: 500;
             padding-bottom: 2rem;
@@ -237,6 +266,7 @@
 
           p {
             font-size: 1.3rem;
+            opacity: 0;
 
             span {
               font-weight: 500;
@@ -249,11 +279,15 @@
           position: absolute;
           width: 40%;
           height: 100%;
+          overflow: hidden;
 
           img {
+            transition: 0.7s;
             max-width: 100%;
             height: 100%;
             object-fit: scale-down;
+            transform: translateX(-101%);
+            opacity: 0;
           }
         }
 
@@ -265,6 +299,10 @@
             right: 0;
             display: flex;
             justify-content: flex-end;
+
+            img {
+              transform: translateX(101%);
+            }
           }
         }
 
@@ -645,6 +683,16 @@ body[modalOpened='true']
 
       .home__reference__item__image {
         display: none;
+      }
+
+      &.home__references__item__visible .home__references__item__text {
+        h3 span {
+          animation-delay: 0s;
+        }
+
+        p {
+          animation-delay: 0.15s;
+        }
       }
     }
 

@@ -1,20 +1,39 @@
+import { IntersectionOptions, useInView } from 'react-intersection-observer'
+
 export const References = () => {
+  const options: IntersectionOptions = {
+    threshold: 0.4,
+    triggerOnce: true,
+  }
+
+  const artistiqueObserver = useInView(options)
+  const musiqueObserver = useInView(options)
+  const cinemaObserver = useInView(options)
+  const literraireObserver = useInView(options)
+
   return (
     <>
       <div id='references'></div>
       <section className='home__references'>
         <h2>Mon Univers</h2>
         <div>
-          <div className='home__references__item left home__references__item__blue'>
+          <div
+            ref={artistiqueObserver.ref}
+            className={`home__references__item home__references__item__blue ${
+              artistiqueObserver.inView ? 'home__references__item__visible' : ''
+            }`}
+          >
             <div className='home__reference__item__image'>
               <img
                 src='/assets/ref_artistique.png'
                 alt='Références Artistiques'
               />
             </div>
-            <div className='home__references__item__text'>
+            <div className={`home__references__item__text`}>
               <h3>
-                <span>01 |</span> Références Artistiques
+                <span>
+                  <span>01 |</span> Références Artistiques
+                </span>
               </h3>
               <p>
                 Après avoir découvert le graphisme, j'ai beaucoup regardé de
@@ -33,13 +52,20 @@ export const References = () => {
               </p>
             </div>
           </div>
-          <div className='home__references__item right home__references__item__pink'>
+          <div
+            ref={musiqueObserver.ref}
+            className={`home__references__item right home__references__item__pink ${
+              musiqueObserver.inView ? 'home__references__item__visible' : ''
+            }`}
+          >
             <div className='home__reference__item__image'>
               <img src='/assets/ref_musique.png' alt='Références Musicales' />
             </div>
             <div className='home__references__item__text'>
               <h3>
-                <span>02 |</span> Rérérences Musicales
+                <span>
+                  <span>02 |</span> Rérérences Musicales
+                </span>
               </h3>
               <p>
                 La musique m'accompagne tous les jours, que ce soit pendant mon
@@ -60,7 +86,12 @@ export const References = () => {
               </p>
             </div>
           </div>
-          <div className='home__references__item left home__references__item__purple'>
+          <div
+            ref={cinemaObserver.ref}
+            className={`home__references__item home__references__item__purple ${
+              cinemaObserver.inView ? 'home__references__item__visible' : ''
+            }`}
+          >
             <div className='home__reference__item__image'>
               <img
                 src='/assets/ref_series.png'
@@ -69,7 +100,9 @@ export const References = () => {
             </div>
             <div className='home__references__item__text'>
               <h3>
-                <span>03 |</span> Références Cinématographiques
+                <span>
+                  <span>03 |</span> Références Cinématographiques
+                </span>
               </h3>
               <p>
                 J'aime beaucoup regarder des films, mais je suis surtout un très
@@ -89,13 +122,20 @@ export const References = () => {
               </p>
             </div>
           </div>
-          <div className='home__references__item right home__references__item__orange'>
+          <div
+            ref={literraireObserver.ref}
+            className={`home__references__item right home__references__item__orange ${
+              literraireObserver.inView ? 'home__references__item__visible' : ''
+            }`}
+          >
             <div className='home__reference__item__image'>
               <img src='/assets/ref_livre.png' alt='Références Littéraires' />
             </div>
             <div className='home__references__item__text'>
               <h3>
-                <span>04 |</span> Références Littéraires
+                <span>
+                  <span>04 |</span> Références Littéraires
+                </span>
               </h3>
               <p>
                 Je ne suis pas quelqu'un qui lit énormément, je préfère d'autres
