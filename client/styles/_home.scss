@@ -755,6 +755,18 @@ body[modalOpened='true']
       }
     }
 
+    .home__references
+      > div
+      .home__references__item
+      .home__references__item__text {
+      h3 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
     .home__competences > div .home__competences__grid {
       padding: 3rem 0;
       grid-template-columns: 1fr;
