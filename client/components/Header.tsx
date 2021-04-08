@@ -52,7 +52,8 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
 
     sectionsRefs[section].current.scrollIntoView()
 
-    handleClick()
+    setNavOpened(false)
+    document.body.removeAttribute('disable-scroll')
   }
 
   return (
