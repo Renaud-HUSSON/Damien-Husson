@@ -51,6 +51,8 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
     const section: sections = e.target.dataset.section!
 
     sectionsRefs[section].current.scrollIntoView()
+
+    setNavOpened(false)
   }
 
   return (
