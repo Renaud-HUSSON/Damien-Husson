@@ -52,7 +52,7 @@ export const Header = ({ sectionsRefs }: HeaderProps) => {
 
     sectionsRefs[section].current.scrollIntoView()
 
-    setNavOpened(false)
+    handleClick()
   }
 
   return (
