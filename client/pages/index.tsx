@@ -31,6 +31,8 @@ export default function Home({
   realisationsData,
   categories,
 }: HomeProps) {
+  const [particlesHeight, setParticlesHeight] = useState('100%')
+
   const smallDevice = useMediaquery(1200)
 
   const [realisations, setRealisations] = useState<Realisation[]>(
@@ -60,6 +62,8 @@ export default function Home({
     } else {
       document.body.setAttribute('disable-scroll', 'false')
     }
+
+    setParticlesHeight(document.body.clientHeight.toString())
   }, [showRealisation])
 
   return (
@@ -106,8 +110,14 @@ Bienvenue sur mon portfolio !'
       <img src='/assets/banner.png' alt='Banner' />
       {!smallDevice && (
         <Particles
-          style={{ position: 'absolute', top: '0', left: '0', zIndex: '-1' }}
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            zIndex: '-1',
+          }}
           width='100vw'
+          height={particlesHeight}
           options={{
             particles: {
               number: {
