@@ -31,8 +31,6 @@ export default function Home({
   realisationsData,
   categories,
 }: HomeProps) {
-  const [particlesHeight, setParticlesHeight] = useState('100%')
-
   const smallDevice = useMediaquery(1200)
 
   const [realisations, setRealisations] = useState<Realisation[]>(
@@ -62,8 +60,6 @@ export default function Home({
     } else {
       document.body.setAttribute('disable-scroll', 'false')
     }
-
-    setParticlesHeight(document.body.clientHeight.toString())
   }, [showRealisation])
 
   return (
@@ -117,7 +113,7 @@ Bienvenue sur mon portfolio !'
             zIndex: '-1',
           }}
           width='100vw'
-          height={particlesHeight}
+          height='100vh'
           options={{
             particles: {
               number: {
