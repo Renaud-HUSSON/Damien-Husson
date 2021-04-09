@@ -20,8 +20,13 @@ export const RealisationsCreate = (props: CreateProps) => {
           perPage={10000}
           source='categorieId'
           reference='categories'
+          allowEmpty
         >
-          <SelectInput source='id' optionText='nom' />
+          <SelectInput
+            source='id'
+            optionText='nom'
+            emptyText='Aucune catégorie'
+          />
         </ReferenceInput>
         <ImageInput
           label='Image'

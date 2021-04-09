@@ -8,5 +8,5 @@
 export interface RealisationPatchBodySchemaInterface {
   titre?: string;
   description?: string;
-  categorieId?: number;
+  categorieId?: number | string;
 }

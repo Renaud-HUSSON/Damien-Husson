@@ -83,10 +83,17 @@ export default (db: Database, fastify: FastifyInstance) => {
         `${FOLDER}${req.file.originalname}`,
         req.file?.buffer!
       )
-      const { dataValues: data } = await db.realisations.create({
+
+      const createBody = {
         ...req.body,
         image: imagePath,
-      })
+      }
+
+      if (req.body.categorieId === 'null') {
+        createBody.categorieId = null
+      }
+
+      const { dataValues: data } = await db.realisations.create(createBody)
       return {
         success: true,
         message: "L'image a bien été ajoutée",
@@ -113,6 +120,10 @@ export default (db: Database, fastify: FastifyInstance) => {
     const values = {
       ...req.body,
       ...(file && { image: imagePath }),
+    }
+
+    if (req.body.categorieId === 'null') {
+      values.categorieId = null
     }
 
     try {

@@ -9,8 +9,16 @@
       "type": "string"
     },
     "categorieId": {
-      "type": "number",
-      "minimum": 0
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "value": "null"
+        }
+      ]
     }
   },
   "required": ["titre", "description"],

@@ -24,8 +24,14 @@ export const RealisationsEdit = (props: EditProps) => {
           perPage={10000}
           source='categorieId'
           reference='categories'
+          allowEmpty
+          emptyValue={null}
         >
-          <SelectInput source='id' optionText='nom' />
+          <SelectInput
+            source='id'
+            optionText='nom'
+            emptyText='Aucune catégorie'
+          />
         </ReferenceInput>
         <ImageField label='Ancienne mage' source='image' title='title' />
         <ImageInput

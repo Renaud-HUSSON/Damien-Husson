@@ -8,5 +8,5 @@
 export interface RealisationPostBodySchemaInterface {
   titre: string;
   description: string;
-  categorieId?: number;
+  categorieId?: number | string;
 }
