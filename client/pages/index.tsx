@@ -113,7 +113,7 @@ Bienvenue sur mon portfolio !'
             zIndex: '-1',
           }}
           width='100vw'
-          height='100vh'
+          height='100%'
           options={{
             particles: {
               number: {
