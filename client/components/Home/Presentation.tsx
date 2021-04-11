@@ -21,26 +21,33 @@ export const Presentation = ({ presentationRef }: PresentationProps) => {
           <h2>Présentation</h2>
           <div>
             <p>
-              Je m'appelle Damien, j'ai 18 ans, je suis originaire de Auch dans
-              le Gers mais je fais mes études à Toulon. Je suis actuellement en
-              DUT MMI mais j'aimerais me réorienter vers un DN MADE mention
-              graphisme à Toulouse.{' '}
+              Je m'appelle Damien, j'ai 18 ans, je suis originaire d'Auch mais
+              je fais mes études à Toulon. Je suis actuellement en DUT MMI mais
+              j'aimerais me réorienter vers un DN MADE mention graphisme à
+              Toulouse.
             </p>
+
             <p>
-              Grâce à cette première année d'étude supérieure, j'ai appris
-              beaucoup de chose mais j'ai surtout découvert une passion, le
-              graphisme.{' '}
+              Je suis quelqu'un de créatif, autonome et très curieux. J'adore
+              découvrir de nouvelles choses et c'est pour ça que je me forme en
+              autodidacte dans différents domaines en dehors des études. Je suis
+              passionné par le graphisme depuis maintenant 8 mois et j'essaye
+              d'en apprendre plus tous les jours dans ce domaine.
             </p>
+
             <p>
-              Aujourd'hui je me définis comme quelqu'un de créatif, autonome et
-              curieux. J'adore découvrir de nouvelle choses, c'est pour ça que
-              je me forme par moi même dans différents domaines en dehors des
-              études
+              J'ai une grosse préférence pour le numérique, que ce soit du
+              travail typographique, de l'illustration, du photomontage ou du
+              design d'interface. Je connais moins les techniques
+              traditionnelles mais je m'y m'intéresse aussi, j'apprends
+              d'ailleurs le dessin en ce moment.
             </p>
+
             <p>
-              Vous découvrirez sur mon portfolio toutes mes créations que ce
-              soit des dessins vectoriels, des photomontages, du web design ou
-              encore des illustrations
+              Vous retrouverez, après cette présentation de moi, mon univers
+              personnel avec une sélection de mes références, mes compétences
+              sur les différents logiciels que j'utilise, ainsi qu'une sélection
+              de mes réalisations.
             </p>
           </div>
         </div>

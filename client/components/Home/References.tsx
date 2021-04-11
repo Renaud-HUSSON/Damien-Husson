@@ -79,15 +79,16 @@ export const References = ({ referencesRef }: ReferencesProps) => {
                 musicale hypnotique, aérienne et ambiante comme le Cloud Rap ou
                 le Lo-Fi. <br /> <span>PNL</span> est mon groupe français
                 favori, des musiques planantes et des clips visuellement
-                incroyables, ils sont les pionniers du Cloud Rap en France avec
-                leur parcours presque parfait. <br /> <span>Travis Scott</span>{' '}
-                est mon artiste américain préféré, il est connu pour son style
-                musical qui est considéré comme un mélange entre du Rap et du
-                Lo-Fi, des musiques et des clips psychédéliques et
-                impressionnants. <br /> <span>Lofi Girl</span> est une chaine
-                qui diffuse sans arrêt des morceaux de Lo-Fi, des musiques
-                instrumentales, avec des rythmes lents et relaxants. J'écoute
-                souvent cette chaine comme fond sonore pour travailler.
+                incroyables, ils sont une vraie source d'inspiration avec leur
+                parcours presque parfait.
+                <br /> <span>Travis Scott</span> est mon artiste américain
+                préféré, il est connu pour son style musical qui est considéré
+                comme un mélange entre du Rap et du Lo-Fi, des musiques et des
+                clips psychédéliques et impressionnants. <br />{' '}
+                <span>Lofi Girl</span> est une chaine qui diffuse sans arrêt des
+                morceaux de Lo-Fi, des musiques instrumentales, avec des rythmes
+                lents et relaxants. J'écoute souvent cette chaine comme fond
+                sonore pour travailler.
               </p>
             </div>
           </div>
